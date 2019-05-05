@@ -21,19 +21,19 @@ void inicio_jogo(){
 
 	int num_aleatorio;
 	
-	printf("Bem-vindo ao MINI WAR.\nAperte qualquer tecla para comecar o jogo.\n");
+	printf("\t\t\t\t\t\t\t\t\tBem-vindo ao MINI WAR.\n\t\t\t\t\t\t\t\t\tAperte qualquer tecla para comecar o jogo.\n");
 
 	system("pause");
 		
-	printf("Player 1, digite seu username: ");
+	printf("\t\t\t\t\t\t\t\t\tPlayer 1, digite seu username: ");
 	
-	scanf(" %[^\n]s", &player1);
+	scanf(" \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%[^\n]s", &player1);
 	
-	printf("Player 2, digite seu username: ");
+	printf("\t\t\t\t\t\t\t\t\tPlayer 2, digite seu username: ");
 	
-	scanf(" %[^\n]s", &player2);
+	scanf(" \t\t\t\t\t\t\t\t\t%[^\n]s", &player2);
 	
-	printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\nCada um de voces possuem 10 tropas adicionais.\nPosicione-as com sabedoria.\n", player1, player2);
+	printf("\t\t\t\t\t\t\t\t\tCada pais possui uma numeracao seguido de uma letra.\n\t\t\t\t\t\t\t\t\tOs paises de numero 1 pertencem a %s.\n\t\t\t\t\t\t\t\t\tEnquanto os paises de numero 2 pertencem a %s.\n\t\t\t\t\t\t\t\t\tCada um de voces possuem 10 tropas adicionais.\n\t\t\t\t\t\t\t\t\tPosicione-as com sabedoria.\n", player1, player2);
 	
 	srand(time(NULL));
 	
@@ -41,12 +41,13 @@ void inicio_jogo(){
 	
 	if(num_aleatorio == 0){
 		
-		printf("%s, eh sua vez!\n", player1);
+		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player1);
+		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player1);
 		
 	}else if(num_aleatorio == 1){
 		
-		printf("%s, eh sua vez!\n", player2);
-		
+		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player2);
+		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player2);
 	}
 	
 }
