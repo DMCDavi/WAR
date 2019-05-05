@@ -13,7 +13,7 @@
 #define CANTINFDIR 9
 #define CANTSUPESQ 5
 #define CANTSUPDIR 6
-#define NUM 0
+#define PAIS 0
 
 void inicio_jogo(){
 	
@@ -21,19 +21,19 @@ void inicio_jogo(){
 
 	int num_aleatorio;
 	
-	printf("======================================================================================================================================================\nBem-vindo ao MINI WAR.\nAperte qualquer tecla para comecar o jogo.\n");
+	printf("Bem-vindo ao MINI WAR.\nAperte qualquer tecla para comecar o jogo.\n");
 
 	system("pause");
 		
 	printf("Player 1, digite seu username: ");
 	
-	scanf("%s", &player1);
+	scanf(" %[^\n]s", &player1);
 	
 	printf("Player 2, digite seu username: ");
 	
-	scanf("%s", &player2);
+	scanf(" %[^\n]s", &player2);
 	
-	printf("Cada um de voces recebe 10 tropas adicionais, posicione-as com sabedoria.\n");
+	printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\nCada um de voces possuem 10 tropas adicionais.\nPosicione-as com sabedoria.\n", player1, player2);
 	
 	srand(time(NULL));
 	
@@ -41,11 +41,11 @@ void inicio_jogo(){
 	
 	if(num_aleatorio == 0){
 		
-		printf("%s, eh sua vez\n", player1);
+		printf("%s, eh sua vez!\n", player1);
 		
 	}else if(num_aleatorio == 1){
 		
-		printf("%s, eh sua vez\n", player2);		
+		printf("%s, eh sua vez!\n", player2);		
 		
 	}
 	
@@ -94,9 +94,11 @@ void nome_paises(char pais[21][4]){
 
 void print_mapa(){
 	
+	system("color 1F");
+	
 	char pais[21][4];
 	
-	int i, j, cont = 0, mapa[40][75] = {
+	int i, j, cont = 0, tropas = 1, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -183,11 +185,11 @@ void print_mapa(){
 				
 				printf("%c%c",124,124);	
 									
-			}else if(mapa[i][j] == NUM){
+			}else if(mapa[i][j] == PAIS){
 				
 				nome_paises(pais);
 						
-				printf("%s111", pais[cont]);		
+				printf("%s%.3d", pais[cont], tropas);		
 			
 				cont++;
 				
@@ -201,11 +203,11 @@ void print_mapa(){
 
 int main(){
 	
-	system("color 1F");
-	
+	inicio_jogo();
+		
 	print_mapa();
 	
-	inicio_jogo();
+
 	
 	return 0;
 	
