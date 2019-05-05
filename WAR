@@ -42,12 +42,10 @@ void inicio_jogo(){
 	if(num_aleatorio == 0){
 		
 		printf("%s, eh sua vez!\n", player1);
-		printf("%s, qual pais voce gostaria de atacar?\n, player1");
 		
 	}else if(num_aleatorio == 1){
 		
 		printf("%s, eh sua vez!\n", player2);
-		printf("%s, qual pais voce gostaria de atacar?\n, player2");
 		
 	}
 	
