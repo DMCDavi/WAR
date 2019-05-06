@@ -33,7 +33,7 @@ void inicio_jogo(){
 	
 	scanf(" \t\t\t\t\t\t\t\t\t%[^\n]s", &player2);
 	
-	printf("\t\t\t\t\t\t\t\t\tCada pais possui uma numeracao seguido de uma letra.\n\t\t\t\t\t\t\t\t\tOs paises de numero 1 pertencem a %s.\n\t\t\t\t\t\t\t\t\tEnquanto os paises de numero 2 pertencem a %s.\n\t\t\t\t\t\t\t\t\tCada um de voces possuem 10 tropas adicionais.\n\t\t\t\t\t\t\t\t\tPosicione-as com sabedoria.\n", player1, player2);
+	printf("\t\t\t\t\t\t\t\t\tCada pais possui uma numeracao seguido de uma letra.\n\t\t\t\t\t\t\t\t\tOs paises de numero 1 pertencem a %s.\n\t\t\t\t\t\t\t\t\tEnquanto os paises de numero 2 pertencem a %s.\n\t\t\t\t\t\t\t\t\tCada um de voces possuem 5 tropas adicionais.\n\t\t\t\t\t\t\t\t\tPosicione-as com sabedoria.\n", player1, player2);
 	
 	srand(time(NULL));
 	
