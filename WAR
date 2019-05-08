@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 #define TERRA 10
 #define NEVE 11
@@ -95,7 +96,7 @@ void nome_paises(char pais[21][4]){
 
 void print_mapa(){
 	
-	system("color 1F");
+	system("color 1f");
 	
 	char pais[21][4];
 	
@@ -153,6 +154,7 @@ void print_mapa(){
 			}else if(mapa[i][j] == AGUA){
 				
 				printf("%c%c",32,32);
+				
 										
 			}else if(mapa[i][j] == HORIZONTAL){
 				
@@ -198,7 +200,32 @@ void print_mapa(){
 				
 		}printf("\n");
 		
+	} 	char posicao_pais[2];
+	int numtropasadic, qtp, Y = 10, U, nt;
+
+
+for(nt = 0; nt <= qtp; nt++){ // ler a distribuicao de tropas
+	printf("Selecione o pais a adicionar as tropas\n");
+	scanf(" %[^\n]s", &posicao_pais); // ler a posicao do pais
+	fflush(stdin);
+	for(U = 0; U<Y; U++){
+		if(strcmp(posicao_pais, PAIS) == 0 ){ // comparar o pais com o mapa
+			printf("Remanejando Tropas!");
+			
+		}else{
+			printf("Pais nao registrado! Tente novamente!!!");
+		}
 	}
+
+	printf("Digite o numero de tropas que voce deseja adicionar nesse pais\n");
+	scanf("%d", &numtropasadic); // o número de tropas à adicionar
+	if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
+		printf("Nao e possivel adicionar! Tente novamente\n!!!");	
+	}else{
+		nt = numtropasadic;
+	}
+
+}
 	
 }
 
