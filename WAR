@@ -16,6 +16,10 @@
 #define CANTSUPDIR 6
 #define PAIS 0
 
+char pais[21][4];
+
+char num_player[2], letra_pais[3];
+
 void inicio_jogo(){
 	
 	char player1[100], player2[100];
@@ -56,8 +60,6 @@ void inicio_jogo(){
 void nome_paises(char pais[21][4]){
 		
 	int k, num_aleatorio, qntd_player1 = 0, qntd_player2 = 0;
-		
-	char num_player[2], letra_pais[3];
 	
 	srand(time(NULL));
 	
@@ -200,33 +202,38 @@ void print_mapa(){
 				
 		}printf("\n");
 		
-	} 	char posicao_pais[2];
+	} char posicao_pais;
+	
 	int numtropasadic, qtp, Y = 10, U, nt;
 
-
-for(nt = 0; nt <= qtp; nt++){ // ler a distribuicao de tropas
-	printf("Selecione o pais a adicionar as tropas\n");
-	scanf(" %[^\n]s", &posicao_pais); // ler a posicao do pais
-	fflush(stdin);
-	for(U = 0; U<Y; U++){
-		if(strcmp(posicao_pais, PAIS) == 0 ){ // comparar o pais com o mapa
-			printf("Remanejando Tropas!");
+	for(nt = 0; nt <= qtp; nt++){ 
+	
+		printf("Selecione o pais a adicionar as tropas\n");
+		
+		scanf("%s", &posicao_pais); 
+		
+		fflush(stdin);
 			
+		if(posicao_pais == pais[0][1]){ 
+		
+			printf("Remanejando Tropas!");
+				
 		}else{
+			
 			printf("Pais nao registrado! Tente novamente!!!");
 		}
-	}
-
-	printf("Digite o numero de tropas que voce deseja adicionar nesse pais\n");
-	scanf("%d", &numtropasadic); // o número de tropas à adicionar
-	if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
-		printf("Nao e possivel adicionar! Tente novamente\n!!!");	
-	}else{
-		nt = numtropasadic;
-	}
-
-}
+		
 	
+		printf("Digite o numero de tropas que voce deseja adicionar nesse pais\n");
+		scanf("%d", &numtropasadic); // o número de tropas à adicionar
+		if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
+			printf("Nao e possivel adicionar! Tente novamente\n!!!");	
+		}else{
+			nt = numtropasadic;
+		}
+	
+	}
+		
 }
 
 int main(){
