@@ -20,8 +20,6 @@ char pais[21][4];
 
 char num_player[2], letra_pais[3];
 
-int qntd_player1 = 0, qntd_player2 = 0;
-
 void inicio_jogo(){
 	
 	char player1[100], player2[100];
@@ -61,7 +59,7 @@ void inicio_jogo(){
 
 void nome_paises(char pais[21][4]){
 		
-	int k, num_aleatorio;
+	int k, num_aleatorio, qntd_player1 = 0, qntd_player2 = 0;
 	
 	srand(time(NULL));
 	
@@ -104,7 +102,7 @@ void print_mapa(){
 	
 	char pais[21][4];
 	
-	int i, j, cont = 0, tropas = 1, mapa[40][75] = {
+	int x, i, j, cont = 0, tropas[21] = {1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -196,10 +194,11 @@ void print_mapa(){
 				
 				nome_paises(pais);
 						
-				printf("%s%.3d", pais[cont], tropas);		
+				printf("%s%.3d", pais[cont], tropas[x]);		
 			
 				cont++;
 				
+				x++;
 			}
 				
 		}printf("\n");
@@ -265,9 +264,7 @@ int calcular_Quantidade_Dados_Jogador1(int idRodadaJogador){
 	
 	
 	if(idRodadaJogador == 1){
-		if(qntd_player1){
-			
-		}
+
 		//aqui pega as variaveis globais (qntd_player1) 
 
 	}else{
