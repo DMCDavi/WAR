@@ -2,27 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-
-#define TERRA 10
-#define NEVE 11
-#define AGUA 4
-#define CAMINHOHOR 3
-#define CAMINHOVER 1
-#define HORIZONTAL 2
-#define VERTICAL 7
-#define CANTINFESQ 8
-#define CANTINFDIR 9
-#define CANTSUPESQ 5
-#define CANTSUPDIR 6
-#define PAIS 0
-
-char pais[21][4];
-
-char num_player[2], letra_pais[3];
+#include "var_globais.h"
 
 void inicio_jogo(){
 	
-	char player1[100], player2[100];
+	char player1[100], player2[100]; //variáveis que receberão os nicks dos players
 
 	int num_aleatorio;
 	
@@ -42,67 +26,69 @@ void inicio_jogo(){
 	
 	srand(time(NULL));
 	
-	num_aleatorio = rand() % 2;
+	num_aleatorio = rand() % 2; //um número aleatório que receberá 0 ou 1
 	
-	if(num_aleatorio == 0){
+	if(num_aleatorio == 0){ //se o número aleatório for 0, o jogo vai iniciar pelo player 1
 		
 		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player1);
+		
 		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player1);
 		
-	}else if(num_aleatorio == 1){
+	}else if(num_aleatorio == 1){ //se o numero aletorio for 1, o jogo vai iniciar pelo player 2
 		
 		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player2);
+		
 		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player2);
 	}
 	
 }
 
-void nome_paises(char pais[21][4]){
+void nome_paises(char pais[21][4]){ //função que nomeará os vinte paises com 3 caracteres cada, distribuindo-os aleatoriamente para cada jogador
 		
-	int k, num_aleatorio, qntd_player1 = 0, qntd_player2 = 0;
+	int cont_nome_pais, num_aleatorio, qntd_paises_player1 = 0, qntd_paises_player2 = 0;
 	
 	srand(time(NULL));
 	
-	for(k = 0; k < 20; k++){
+	for(cont_nome_pais = 0; cont_nome_pais < 20; cont_nome_pais++){ //repete 20 vezes a operação pra nomear todos os 20 países
 		
-		num_aleatorio = rand() % 2;
+		num_aleatorio = rand() % 2; //o numero aleatorio receberá um numero entre 0 e 1
 		
-		if((num_aleatorio == 0 && qntd_player1 < 10) || qntd_player2 >= 10){
+		if((num_aleatorio == 0 && qntd_paises_player1 < 10) || qntd_paises_player2 >= 10){ //se o numero aletorio receber 0 e o player 1 ainda não tiver 10 paises sob seu controle ou se a quantidade de paises sob controle do player 2 tiver chegado a 10, o país passará a ser do player 1
 			
-			strcpy(num_player, "1\0");
+			strcpy(num_player, "1\0"); //copia 1 na variável num_player
 			
-			qntd_player1++;
+			qntd_paises_player1++; //aumenta em 1 a quantidade de paises sob controle do player 1
 			
-		} else if((num_aleatorio == 1 && qntd_player2 < 10) || qntd_player1 >= 10){
+		} else if((num_aleatorio == 1 && qntd_paises_player2 < 10) || qntd_paises_player1 >= 10){ //se o numero aletorio receber 1 e o player 2 ainda não tiver 10 paises sob seu controle ou se a quantidade de paises sob controle do player 1 tiver chegado a 10, o país passará a ser do player 2
 		
-			strcpy(num_player, "2\0");
+			strcpy(num_player, "2\0"); //copia 2 na variavel num_player
 			
-			qntd_player2++;
+			qntd_paises_player2++; //aumenta em 1 a quantidade de paises sob controle do player 2
 			
-		} letra_pais[0] = 65 + k;
+		} letra_pais[0] = 65 + cont_nome_pais; //define a letra que cada país vai receber, seguindo a tabela ASCII
 		
-		letra_pais[1] = '-';
+		letra_pais[1] = '-'; //adiciona um hífen que separa a identificação do país das tropas
 		
-		letra_pais[2] = '\0';
+		letra_pais[2] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
 		
-		strcat(num_player, letra_pais);
+		strcat(num_player, letra_pais); //concatena a numeração do player com a letra do país e o hífen na variável num_player
 		
-		strcpy(pais[k], num_player);
+		strcpy(pais[cont_nome_pais], num_player); //copia na matriz pais[21][4] a identificação de cada país e a qual player pertence 
 		
-		num_player[0] = '\0';
+		num_player[0] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
 		
-		letra_pais[0] = '\0';
+		letra_pais[0] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
 	}
 	
 }
 
-void print_mapa(){
+void print_mapa(){ //função que printa na tela o mapa
 	
-	system("color 1f");
+	system("color 1F"); //define as cores do mapa
 	
-	char pais[21][4];
+	char pais[21][4]; //variável que será usada na função nome_paises para receber a nomeação de cada país
 	
-	int x, i, j, cont = 0, tropas[21] = {1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, mapa[40][75] = {
+	int cont_tropas = 0, cont_linhas, cont_colunas, cont_pais = 0, tropas[21] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -145,60 +131,59 @@ void print_mapa(){
 4,4,4,4,4,4,4,4,4,4,4,4,4,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 };
 	
-	for(i = 0; i < 40; i++ ){
+	for(cont_linhas = 0; cont_linhas < 40; cont_linhas++ ){ //percorre a matriz mapa toda e substitui seus valores por um caracter especial
 		
-		for(j = 0 ; j < 75; j++ ){
+		for(cont_colunas = 0 ; cont_colunas < 75; cont_colunas++ ){
 			
-			if(mapa[i][j] == NEVE){
+			if(mapa[cont_linhas][cont_colunas] == NEVE){
 				
 				printf("%c%c",219,219);
 					
-			}else if(mapa[i][j] == AGUA){
+			}else if(mapa[cont_linhas][cont_colunas] == AGUA){
 				
 				printf("%c%c",32,32);
-				
 										
-			}else if(mapa[i][j] == HORIZONTAL){
+			}else if(mapa[cont_linhas][cont_colunas] == HORIZONTAL){
 				
 				printf("%c%c",205,205);
 										
-			}else if(mapa[i][j] == VERTICAL){
+			}else if(mapa[cont_linhas][cont_colunas] == VERTICAL){
 				
 				printf("%c%c",186,186);
 										
-			}else if(mapa[i][j] == CANTINFESQ){
+			}else if(mapa[cont_linhas][cont_colunas] == CANTINFESQ){
 				
 				printf("%c%c",200,200);
 										
-			}else if(mapa[i][j] == CANTINFDIR){
+			}else if(mapa[cont_linhas][cont_colunas] == CANTINFDIR){
 				
 				printf("%c%c",188,188);
 										
-			}else if(mapa[i][j] == CANTSUPESQ){
+			}else if(mapa[cont_linhas][cont_colunas] == CANTSUPESQ){
 				
 				printf("%c%c",201,201);	
 									
-			}else if(mapa[i][j] == CANTSUPDIR){
+			}else if(mapa[cont_linhas][cont_colunas] == CANTSUPDIR){
 				
 				printf("%c%c",187,187);
 										
-			}else if(mapa[i][j] == CAMINHOHOR){
+			}else if(mapa[cont_linhas][cont_colunas] == CAMINHOHOR){
 				
 				printf("%c%c",196,196);	
 									
-			}else if(mapa[i][j] == CAMINHOVER){
+			}else if(mapa[cont_linhas][cont_colunas] == CAMINHOVER){
 				
 				printf("%c%c",124,124);	
 									
-			}else if(mapa[i][j] == PAIS){
+			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
 				
-				nome_paises(pais);
+				nome_paises(pais); //chama a função que nomeia cada pais e aramazena cada nome na matriz pais
 						
-				printf("%s%.3d", pais[cont], tropas[x]);		
+				printf("%s%.3d", pais[cont_pais], tropas[cont_tropas]);	//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
 			
-				cont++;
+				cont_pais++;
 				
-				x++;
+				cont_tropas++;
 			}
 				
 		}printf("\n");
