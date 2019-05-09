@@ -204,34 +204,56 @@ void print_mapa(){
 		
 	} char posicao_pais;
 	
-	int numtropasadic, qtp, Y = 10, U, nt;
+	int num_posicao_pais, teste_v_f = 0, numtropasadic, a = 97, b, c, qtp, Y = 10, U, nt;
 
 	for(nt = 0; nt <= qtp; nt++){ 
 	
-		printf("Selecione o pais a adicionar as tropas\n");
+		printf("Selecione o pais a adicionar as tropas:\n");
 		
-		scanf("%s", &posicao_pais); 
+		scanf("%s", &posicao_pais); //ler a letra do pais
 		
 		fflush(stdin);
-			
-		if(posicao_pais == pais[0][1]){ 
 		
-			printf("Remanejando Tropas!");
+		num_posicao_pais = posicao_pais;
+		
+		for(b = 65; b <= 84; b++){
+			
+			if(num_posicao_pais == b || num_posicao_pais == a){
 				
-		}else{
+				teste_v_f = 1;
 			
-			printf("Pais nao registrado! Tente novamente!!!");
+			} a++;
+			
 		}
 		
+		if(teste_v_f == 1){
+			
+			for(c = 0; c < 21; c++){
+				
+			if(posicao_pais == pais[c][1]){ //Comparar a letra digitada com a letra do país no mapa
 	
-		printf("Digite o numero de tropas que voce deseja adicionar nesse pais\n");
-		scanf("%d", &numtropasadic); // o número de tropas à adicionar
-		if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
-			printf("Nao e possivel adicionar! Tente novamente\n!!!");	
+			printf("Digite o numero de tropas que voce deseja adicionar no pais:\n");
+		
+			scanf("%d", &numtropasadic); // Ler o número de tropas à adicionar
+			
+			if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
+			
+				printf("Nao e possivel adicionar! Tente novamente\n!!!");
+					
+			}else{
+				
+				nt = numtropasadic;
+			}
+		}	
+				
+			}
+		
 		}else{
-			nt = numtropasadic;
+			
+			printf("Pais nao registrado! Tente novamente!!!\n");
+			
 		}
-	
+		
 	}
 		
 }
