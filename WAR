@@ -20,6 +20,8 @@ char pais[21][4];
 
 char num_player[2], letra_pais[3];
 
+int qntd_player1 = 0, qntd_player2 = 0;
+
 void inicio_jogo(){
 	
 	char player1[100], player2[100];
@@ -59,7 +61,7 @@ void inicio_jogo(){
 
 void nome_paises(char pais[21][4]){
 		
-	int k, num_aleatorio, qntd_player1 = 0, qntd_player2 = 0;
+	int k, num_aleatorio;
 	
 	srand(time(NULL));
 	
@@ -257,14 +259,56 @@ void print_mapa(){
 	}
 		
 }
+//Quantidade de dados por jogador ---TROPAS----
+int calcular_Quantidade_Dados_Jogador1(int idRodadaJogador){
+	
+	
+	
+	if(idRodadaJogador == 1){
+		if(qntd_player1){
+			
+		}
+		//aqui pega as variaveis globais (qntd_player1) 
+
+	}else{
+		//aqui pega as variaveis globais (qntd_player2) 
+	}
+	
+	
+	
+}
+
+
+//dados de ataque e defesa
+	int ataque (int qtd_dados){
+		int dado_ataque[qtd_dados];
+		int i;
+		int maior_ataque = 0;
+		for (i=0; i<qtd_dados; i++){
+			srand(time(NULL));
+			dado_ataque[i] = (rand() % 5) + 1;
+		//pegando o maior numero sorteado pelos dados de ataque para compará-lo com o maior dos de defesa;
+			if (maior_ataque < dado_ataque[i]) maior_ataque = dado_ataque[i];			
+	}
+	return maior_ataque; 
+}
+int defesa (int i, int dado_defesa[3], int maior_defesa){
+	maior_defesa = 0;
+	for (i=0; i<3; i++){
+		srand(time(NULL));
+		dado_defesa[i] = (rand() % 5) + 1;
+		//pegando o maior numero sorteado pelos dados de ataque para compará-lo com o maior dos de defesa;	
+		if (maior_defesa < dado_defesa[i]) maior_defesa = dado_defesa[i];		
+	}
+	return maior_defesa; 
+}
+
 
 int main(){
 	
 	inicio_jogo();
 		
 	print_mapa();
-	
-
 	
 	return 0;
 	
