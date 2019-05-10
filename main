@@ -4,25 +4,25 @@
 #include <time.h>
 #include "var_globais.h"
 
-void inicio_jogo(){
+void cadastro_players(){ //função que irá cadastrar os players em nomes de usuario
 	
-	char player1[100], player2[100]; //variáveis que receberão os nicks dos players
-
-	int num_aleatorio;
-	
-	printf("\t\t\t\t\t\t\t\t\tBem-vindo ao MINI WAR.\n\t\t\t\t\t\t\t\t\tAperte qualquer tecla para comecar o jogo.\n");
-
-	system("pause");
+	printf("Bem-vindo ao MINI WAR.\n");
 		
-	printf("\t\t\t\t\t\t\t\t\tPlayer 1, digite seu username: ");
+	printf("Player 1, digite seu username: ");
 	
-	scanf(" \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t%[^\n]s", &player1);
+	scanf(" %[^\n]s", &player1);
 	
-	printf("\t\t\t\t\t\t\t\t\tPlayer 2, digite seu username: ");
+	printf("Player 2, digite seu username: ");
 	
-	scanf(" \t\t\t\t\t\t\t\t\t%[^\n]s", &player2);
+	scanf(" %[^\n]s", &player2);
 	
-	printf("\t\t\t\t\t\t\t\t\tCada pais possui uma numeracao seguido de uma letra.\n\t\t\t\t\t\t\t\t\tOs paises de numero 1 pertencem a %s.\n\t\t\t\t\t\t\t\t\tEnquanto os paises de numero 2 pertencem a %s.\n\t\t\t\t\t\t\t\t\tCada um de voces possuem 5 tropas adicionais.\n\t\t\t\t\t\t\t\t\tPosicione-as com sabedoria.\n", player1, player2);
+	system("pause");
+	
+}
+
+void aleat_players(){ //função que define de forma aleatoria quem vai iniciar o jogo
+	
+	int num_aleatorio;
 	
 	srand(time(NULL));
 	
@@ -30,15 +30,16 @@ void inicio_jogo(){
 	
 	if(num_aleatorio == 0){ //se o número aleatório for 0, o jogo vai iniciar pelo player 1
 		
-		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player1);
+		strcpy(vez_player[0], player1); 
 		
-		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player1);
+		strcpy(vez_player[1], player2);
 		
 	}else if(num_aleatorio == 1){ //se o numero aletorio for 1, o jogo vai iniciar pelo player 2
 		
-		printf("\t\t\t\t\t\t\t\t\t%s, eh sua vez!\n", player2);
-		
-		printf("\t\t\t\t\t\t\t\t\t%s, posicione suas tropas!\n", player2);
+		strcpy(vez_player[0], player2); 
+	
+		strcpy(vez_player[1], player1);
+	
 	}
 	
 }
@@ -69,15 +70,15 @@ void nome_paises(char pais[21][4]){ //função que nomeará os vinte paises com 
 		
 		letra_pais[1] = '-'; //adiciona um hífen que separa a identificação do país das tropas
 		
-		letra_pais[2] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
+		letra_pais[2] = '\0'; //põe um fim na string (nn sei qual a necessidade disso, mas se tirar buga)
 		
 		strcat(num_player, letra_pais); //concatena a numeração do player com a letra do país e o hífen na variável num_player
 		
 		strcpy(pais[cont_nome_pais], num_player); //copia na matriz pais[21][4] a identificação de cada país e a qual player pertence 
 		
-		num_player[0] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
+		num_player[0] = '\0'; //põe um fim na string (nn sei qual a necessidade disso, mas se tirar buga)
 		
-		letra_pais[0] = '\0'; //põe um fim da string (nn sei qual a necessidade disso, mas se tirar buga)
+		letra_pais[0] = '\0'; //põe um fim na string (nn sei qual a necessidade disso, mas se tirar buga)
 	}
 	
 }
@@ -86,9 +87,7 @@ void print_mapa(){ //função que printa na tela o mapa
 	
 	system("color 1F"); //define as cores do mapa
 	
-	char pais[21][4]; //variável que será usada na função nome_paises para receber a nomeação de cada país
-	
-	int cont_tropas = 0, cont_linhas, cont_colunas, cont_pais = 0, tropas[21] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}, mapa[40][75] = {
+	int cont_tropas = 0, cont_linhas, cont_colunas, cont_pais = 0, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -179,7 +178,7 @@ void print_mapa(){ //função que printa na tela o mapa
 				
 				nome_paises(pais); //chama a função que nomeia cada pais e aramazena cada nome na matriz pais
 						
-				printf("%s%.3d", pais[cont_pais], tropas[cont_tropas]);	//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
+				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
 			
 				cont_pais++;
 				
@@ -188,60 +187,88 @@ void print_mapa(){ //função que printa na tela o mapa
 				
 		}printf("\n");
 		
-	} char posicao_pais;
+	} printf("======================================================================================================================================================\n");
 	
-	int num_posicao_pais, teste_v_f = 0, numtropasadic, a = 97, b, c, qtp, Y = 10, U, nt;
+}
 
-	for(nt = 0; nt <= qtp; nt++){ 
+void add_tropas(){ //função para adicionar as tropas no inicio de cada rodada
 	
-		printf("Selecione o pais a adicionar as tropas:\n");
+	char posicao_pais; //vai receber a letra do pais 
+	
+	int ascii_posicao_pais, cont_num_pais, qntd_paises_player1 = 0, qntd_paises_player2 = 0, tropas_player[3], teste_v_f = 0, num_tropas_add, cont_maiuscula = 65, cont_minuscula = 97, c, qtp, Y = 10, U; 
+
+	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirão a que player cada pais pertence
 		
-		scanf("%s", &posicao_pais); //ler a letra do pais
-		
-		fflush(stdin);
-		
-		num_posicao_pais = posicao_pais;
-		
-		for(b = 65; b <= 84; b++){
+		if(pais[cont_num_pais][0] == '1'){ //se o pais tiver o numero 1, a variavel qntd_paises_player1 vai aumentar em 1
 			
-			if(num_posicao_pais == b || num_posicao_pais == a){
-				
-				teste_v_f = 1;
+			qntd_paises_player1++;
 			
-			} a++;
+		}else{ //se o pais tiver o numero 2, a variavel qntd_paises_player2 vai aumentar em 1
+			
+			qntd_paises_player2++;
 			
 		}
 		
-		if(teste_v_f == 1){
-			
-			for(c = 0; c < 21; c++){
-				
-			if(posicao_pais == pais[c][1]){ //Comparar a letra digitada com a letra do país no mapa
+	} tropas_player[0] = qntd_paises_player1 / 2; //armazena na variavel tropas_player[0] a quantidade de tropas que o player 1 tem disponivel para adicionar em seus paises
 	
-			printf("Digite o numero de tropas que voce deseja adicionar no pais:\n");
+	tropas_player[1] = qntd_paises_player2 / 2; //armazena na variavel tropas_player[1] a quantidade de tropas que o player 2 tem disponivel para adicionar em seus paises
+
+	printf("%s, voce possui %d tropas adicionais.\nPosicione-as com sabedoria.\n", vez_player[vez], tropas_player[vez]); //diz quem vai começar a adicionar as tropas
+
+	while(tropas_player[vez] != 0){ //vai repetir o processo de adicionar as tropas até a quantidade de tropas disponiveis do player acabar
+	
+		printf("Digite a letra do pais que deseja adicionar suas tropas:\n");
 		
-			scanf("%d", &numtropasadic); // Ler o número de tropas à adicionar
+		scanf("%s", &posicao_pais); //lê a letra do pais que o usuario quer adicionar as tropas
+		
+		fflush(stdin);
+		
+		ascii_posicao_pais = posicao_pais; //transforma a letra do pais em um numero da tabela ASCII pra posteriormente ver se a letra digitada é válida ou não
+		
+		while(cont_maiuscula <= 84 || cont_minuscula <= 116){ //percorre os valores da tabela ascii, referentes as letras de A até T maiusculas e minusculas
 			
-			if (numtropasadic > nt || numtropasadic == 0){ // verificar se é válido ou não
-			
-				printf("Nao e possivel adicionar! Tente novamente\n!!!");
-					
-			}else{
+			if(ascii_posicao_pais == cont_minuscula || ascii_posicao_pais == cont_maiuscula){ //caso a letra digitada esteja entre as letras A e T maiusculas e minusculas, a variavel teste_v_f recebe 1
 				
-				nt = numtropasadic;
-			}
-		}	
+				teste_v_f = 1;
+				
+				break; //para a verificação caso ache a letra válida
+			
+			} else{ //caso a letra digitada não seja válida, teste_v_f vai receber 0
+				
+				teste_v_f = 0;
+				
+			}cont_maiuscula++;
+			
+			cont_minuscula++;
+			
+		} cont_maiuscula = 65; //retornando o valor original das variaveis
+		
+		cont_minuscula = 97; 
+		
+		if(teste_v_f == 1){ //se a letra digitada for válida o processo continua, senão pede pra digitar novamente
+	
+			printf("Digite o numero de tropas que voce deseja adicionar nesse pais:\n");
+		
+			scanf("%d", &num_tropas_add); // Lê o número de tropas que o player quer adicionar no pais
+			
+			if(num_tropas_add <= tropas_player[vez]){
+				
+				tropas_player[vez] = tropas_player[vez] - num_tropas_add; //diminui a quantidade de tropas disponiveis
+				
+			} else{
+				
+				printf("Voce apenas possui %d tropas. Digite novamente.\n");
 				
 			}
 		
-		}else{
+		} else{
 			
-			printf("Pais nao registrado! Tente novamente!!!\n");
+			printf("Pais nao registrado. Digite novamente.\n"); //printa na tela essa mensagem caso a letra digitada não seja válida
 			
 		}
 		
 	}
-		
+	
 }
 //Quantidade de dados por jogador ---TROPAS----
 int calcular_Quantidade_Dados_Jogador1(int idRodadaJogador){
@@ -255,8 +282,6 @@ int calcular_Quantidade_Dados_Jogador1(int idRodadaJogador){
 	}else{
 		//aqui pega as variaveis globais (qntd_player2) 
 	}
-	
-	
 	
 }
 
@@ -288,9 +313,17 @@ int defesa (int i, int dado_defesa[3], int maior_defesa){
 
 int main(){
 	
-	inicio_jogo();
-		
+	cadastro_players();
+	
+	aleat_players();
+	
 	print_mapa();
+	
+	printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\n", player1, player2);
+	
+	system("pause");
+	
+	add_tropas();
 	
 	return 0;
 	
