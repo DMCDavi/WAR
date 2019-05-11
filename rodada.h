@@ -48,7 +48,7 @@ void add_tropas(){ //função para adicionar as tropas no inicio de cada rodada
 			
 				scanf("%d", &num_tropas_add); // Lê o número de tropas que o player quer adicionar no pais
 				
-				if(num_tropas_add <= tropas_player[vez]){
+				if(num_tropas_add <= tropas_player[vez]){ //só prossegue com o código se o número de tropas que o player quer adicinonar for menor ou igual que o número de tropas disponíveis que ele possui, senão pede pra digitar novamente
 					
 					tropas_pais[num_pais] = tropas_pais[num_pais] + num_tropas_add; //adiciona a quantidade desejada de tropas no pais de interesse
 					
