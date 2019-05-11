@@ -1,3 +1,11 @@
+//Essa biblioteca contém as bibliotecas essenciais, as constantes e as variáveis globais
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <stdbool.h>
+
 #define TERRA 10
 #define NEVE 11
 #define AGUA 4
@@ -15,7 +23,7 @@ char pais[21][4]; //variável que será usada na função nome_paises para receb
 
 char num_player[2], letra_pais[3]; //num_player armazenará os numeros 1 ou 2 referentes a cada player; letra_pais armazenará as letras que representarão cada país
 
-char vez_player[3][100], player1[100], player2[100]; //variáveis que receberão os nicks dos players; vez_player[0] vai receber o jogador que iniciará o jogo e vez_player[1] vai receber o player que não vai iniciar o jogo
+char player[3][100], player1[100], player2[100]; //variáveis que receberão os nicks dos players; player[0] vai receber o jogador que iniciará o jogo e vez_player[1] vai receber o player que não vai iniciar o jogo
 
 int vez = 0; //armazenará os valores 0 ou 1, que servirão como parâmetro pra saber de quem é a vez na rodada, onde 0 representa o player que iniciou o jogo e 1 o outro player
 
