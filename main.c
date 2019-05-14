@@ -17,7 +17,11 @@ int main(){
 	
 	system("pause");
 	
-	add_tropas();
+	for(vez = 0; vez <= 1; vez++){ //laço de repetição que faz cada jogador adicionar suas tropas no inicio do jogo
+		
+		add_tropas();
+		
+	}
 	
 	return 0;
 	
