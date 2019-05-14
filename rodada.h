@@ -4,21 +4,25 @@ void add_tropas(){ //funÃ§Ã£o para adicionar as tropas no inicio de cada rod
 	
 	char posicao_pais; //vai receber a letra do pais 
 	
-	unsigned int num_pais, cont_num_pais, qntd_paises_player1 = 0, qntd_paises_player2 = 0, tropas_player[3], num_tropas_add; 
+	unsigned int num_pais, cont_num_pais, tropas_player[3], num_tropas_add; 
 
-	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirÃ£o a que player cada pais pertence
+	qntd_paises_player1 = 0; //zerando as variaveis para evitar erros
+	
+	qntd_paises_player2 = 0;
+
+	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirÃƒÂ£o a que player cada pais pertence
 		
 		if(pais[cont_num_pais][0] == '1'){ //se o pais tiver o numero 1, a variavel qntd_paises_player1 vai aumentar em 1
 			
 			qntd_paises_player1++;
 			
-		} else{ //se o pais tiver o numero 2, a variavel qntd_paises_player2 vai aumentar em 1
+		} else if(pais[cont_num_pais][0] == '2'){ //se o pais tiver o numero 2, a variavel qntd_paises_player2 vai aumentar em 1
 			
 			qntd_paises_player2++;
 			
 		}
 		
-	} if(qntd_paises_player1 <= 6){ //se o player 1 tiver 6 paises ou menos sob seu controle, irá receber 3 tropas adicionais de qualquer forma
+	} if(qntd_paises_player1 <= 6){ //se o player 1 tiver 6 paises ou menos sob seu controle, irÃ¡ receber 3 tropas adicionais de qualquer forma
 		
 		tropas_player[0] = 3;
 			
@@ -26,7 +30,7 @@ void add_tropas(){ //funÃ§Ã£o para adicionar as tropas no inicio de cada rod
 			
 		tropas_player[0] = qntd_paises_player1 / 2; //armazena na variavel tropas_player[0] a quantidade de tropas que o player 1 tem disponivel para adicionar em seus paises
 			
-	} if(qntd_paises_player2 <= 6){ //se o player 2 tiver 6 paises ou menos sob seu controle, irá receber 3 tropas adicionais de qualquer forma
+	} if(qntd_paises_player2 <= 6){ //se o player 2 tiver 6 paises ou menos sob seu controle, irÃ¡ receber 3 tropas adicionais de qualquer forma
 
 		tropas_player[1] = 3;
 			
