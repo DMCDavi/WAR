@@ -28,3 +28,5 @@ char player[3][100], player1[100], player2[100]; //variáveis que receberão os 
 int vez = 0; //armazenará os valores 0 ou 1, que servirão como parâmetro pra saber de quem é a vez na rodada, onde 0 representa o player que iniciou o jogo e 1 o outro player
 
 int tropas_pais[21] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; //tropas_pais armazena a quantidade de tropas de cada país, onde cada valor do vetor representa um pais
+
+unsigned int qntd_paises_player1 = 0, qntd_paises_player2 = 0; //representam a quantidade de paises que cada player possui
