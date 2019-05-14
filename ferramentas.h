@@ -122,7 +122,7 @@ bool teste_dono_pais(char letra){ //funÃ§Ã£o que testa se o paÃ­s pertence
 		
 		if(pais[cont_matriz_pais][1] == letra){ //caso encontre a letra digitada, prosseguirÃ¡ a anÃ¡lise
 		
-			if(strcmp(player[0], player1) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 1
+			if(strcmp(player[vez], player1) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 1
 			
 				if(pais[cont_matriz_pais][0] == '1'){ //se o nÃºmero encontrado no paÃ­s tiver a numeraÃ§Ã£o 1, a funÃ§Ã£o retornarÃ¡ true, senÃ£o retornarÃ¡ false
 					
@@ -138,7 +138,7 @@ bool teste_dono_pais(char letra){ //funÃ§Ã£o que testa se o paÃ­s pertence
 					
 				}
 			
-			} else if(strcmp(player[0], player2) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 2 
+			} else if(strcmp(player[vez], player2) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 2 
 				
 				if(pais[cont_matriz_pais][0] == '2'){ //se o nÃºmero encontrado no paÃ­s tiver a numeraÃ§Ã£o 2, a funÃ§Ã£o retornarÃ¡ true, senÃ£o retornarÃ¡ false
 					
