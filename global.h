@@ -6,6 +6,7 @@
 #include <time.h>
 #include <stdbool.h>
 
+#define AUX 13
 #define TERRA 10
 #define NEVE 11
 #define AGUA 4
