@@ -434,16 +434,3 @@ bool teste_vizinhanca_pais(char pais_origem, char pais_destino){
 	}
 
 }
-
-//Quantidade de dados por jogador ---TROPAS----
-int calcular_Quantidade_Dados_Jogador1(int idRodadaJogador){
-	
-	if(idRodadaJogador == 1){
-
-		//aqui pega as variaveis globais (qntd_player1) 
-
-	}else{
-		//aqui pega as variaveis globais (qntd_player2) 
-	}
-	
-}
