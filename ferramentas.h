@@ -434,3 +434,83 @@ bool teste_vizinhanca_pais(char pais_origem, char pais_destino){
 	}
 
 }
+
+bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de cada continente
+	
+	bool true_false = false;
+	
+	if(pais[0][0] == '1' && pais[1][0] == '1' && pais[2][0] == '1' && pais[8][0] == '1'){
+		
+		qntd_tropas_bonus_player1 += 5;
+		
+		true_false = true;
+	
+	} else if(pais[0][0] == '2' && pais[1][0] == '2' && pais[2][0] == '2' && pais[8][0] == '2'){
+		
+		qntd_tropas_bonus_player2 += 5;
+		
+		true_false = true;
+		
+	} if(pais[3][0] == '1' && pais[4][0] == '1' && pais[9][0] == '1'){
+		
+		qntd_tropas_bonus_player1 += 5;
+		
+		true_false = true;
+	
+	} else if(pais[3][0] == '2' && pais[4][0] == '2' && pais[9][0] == '2'){
+		
+		qntd_tropas_bonus_player2 += 5;
+		
+		true_false = true;
+		
+	} if(pais[5][0] == '1' && pais[6][0] == '1' && pais[7][0] == '1' && pais[10][0] == '1' && pais[11][0] == '1' && pais[12][0] == '1'){
+		
+		qntd_tropas_bonus_player1 = 7;
+		
+		true_false = true;
+	
+	} else if(pais[5][0] == '2' && pais[6][0] == '2' && pais[7][0] == '2' && pais[10][0] == '2' && pais[11][0] == '2' && pais[12][0] == '2'){
+		
+		qntd_tropas_bonus_player2 = 7;
+		
+		true_false = true;
+		
+	} if(pais[13][0] == '1' && pais[16][0] == '1'){
+		
+		qntd_tropas_bonus_player1 = 2;
+		
+		true_false = true;
+	
+	} else if(pais[13][0] == '2' && pais[16][0] == '2'){
+		
+		qntd_tropas_bonus_player2 = 2;
+		
+		true_false = true;
+		
+	} if(pais[14][0] == '1' && pais[15][0] == '1' && pais[17][0] == '1'){
+		
+		qntd_tropas_bonus_player1 = 3;
+		
+		true_false = true;
+	
+	} else if(pais[14][0] == '2' && pais[15][0] == '2' && pais[17][0] == '2'){
+		
+		qntd_tropas_bonus_player2 = 3;
+		
+		true_false = true;
+		
+	} if(pais[18][0] == '1' && pais[19][0] == '1'){
+		
+		qntd_tropas_bonus_player1 = 2;
+		
+		true_false = true;
+	
+	} else if(pais[18][0] == '2' && pais[19][0] == '2'){
+		
+		qntd_tropas_bonus_player2 = 2;
+		
+		true_false = true;
+		
+	} return true_false;
+	
+}
