@@ -1,9 +1,9 @@
 //Essa biblioteca contém as funções que serão usadas como ferramentas úteis às outras
 
-void print_mapa(){ //função que printa na tela o mapa
-	
-	system("color 1F"); //define as cores do mapa
-	
+void print_mapa(){ 
+	//função que printa na tela o mapa
+	system("color 1F"); 
+	//define as cores do mapa
 	int cont_tropas = 0, cont_linhas, cont_colunas, cont_pais = 0, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -47,8 +47,8 @@ void print_mapa(){ //função que printa na tela o mapa
 4,4,4,4,4,4,4,4,4,4,4,4,4,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 };
 	
-	for(cont_linhas = 0; cont_linhas < 40; cont_linhas++ ){ //percorre a matriz mapa toda e substitui seus valores por um caracter especial
-		
+	for(cont_linhas = 0; cont_linhas < 40; cont_linhas++ ){ 
+		//percorre a matriz mapa toda e substitui seus valores por um caracter especial
 		for(cont_colunas = 0 ; cont_colunas < 75; cont_colunas++ ){
 			
 			if(mapa[cont_linhas][cont_colunas] == NEVE){
@@ -93,8 +93,8 @@ void print_mapa(){ //função que printa na tela o mapa
 									
 			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
 						
-				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
-			
+				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	
+				//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
 				cont_pais++;
 				
 				cont_tropas++;
@@ -106,52 +106,53 @@ void print_mapa(){ //função que printa na tela o mapa
 	
 }
 
-bool teste_dono_pais(char letra){ //funÃ§Ã£o que testa se o paÃ­s pertence ao player ou nÃ£o, retornando true ou false
-	
-	bool true_false = true; //essa variavel fica armazenada como true, pois caso a letra digitada nÃ£o se refira a nenhum paÃ­s, o cÃ³digo irÃ¡ continuar, jÃ¡ que o erro do usuÃ¡rio nÃ£o foi selecionar uma paÃ­s que nÃ£o Ã© seu, mas sim um paÃ­s que nem existe
-	
-	int cont_matriz_pais; //variavel contadora que percorrerÃ¡ a matriz pais[21][4]
-	
-	if(letra >= 97 && letra <= 116){ //se a letra for minuscula de acordo com a tabela ascii, ela serÃ¡ tranformada em maiuscula para poder ser comparada com a letra do paÃ­s na matriz pais[21][4]
-		
-		letra = letra - 32; //transforma a letra minuscula em maiuscula
-		
+bool teste_dono_pais(char letra){ 
+	//funcao que testa se o pais pertence ao player ou nao, retornando true ou false
+	bool true_false = true; 
+	//essa variavel fica armazenada como true, pois caso a letra digitada nao se refira a nenhum pais, o codigo ira continuar, ja que o erro do usuario nao foi selecionar uma pais que nao eh seu, mas sim um pais que nem existe
+	int cont_matriz_pais; 
+	//variavel contadora que percorrer a matriz pais[21][4]
+	if(letra >= 97 && letra <= 116){ 
+	//se a letra for minuscula de acordo com a tabela ascii, ela sera tranformada em maiuscula para poder ser comparada com a letra do pais na matriz pais[21][4]
+		letra = letra - 32; 
+		//transforma a letra minuscula em maiuscula
 	}
 	
-	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ //percorre os 20 paises da matriz pais[21][4]
-		
-		if(pais[cont_matriz_pais][1] == letra){ //caso encontre a letra digitada, prosseguirÃ¡ a anÃ¡lise
-		
-			if(strcmp(player[vez], player1) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 1
-			
-				if(pais[cont_matriz_pais][0] == '1'){ //se o nÃºmero encontrado no paÃ­s tiver a numeraÃ§Ã£o 1, a funÃ§Ã£o retornarÃ¡ true, senÃ£o retornarÃ¡ false
-					
+	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ 
+	//percorre os 20 paises da matriz pais[21][4]
+		if(pais[cont_matriz_pais][1] == letra){ 
+		//caso encontre a letra digitada, prosseguira a anÃ¡lise
+			if(strcmp(player[vez], player1) == 0){ 
+			//a analise continua se a vez da rodada for do jogador 1
+				if(pais[cont_matriz_pais][0] == '1'){ 
+				//se o numero encontrado no pais tiver a numeracao 1, a funcao retornara true, senao retornara false
 					true_false = true;
 					
-					break; //para de percorrer a matriz caso a resposta seja obtida
-					
+					break; 
+					//para de percorrer a matriz caso a resposta seja obtida
 				} else{
 					
 					true_false = false;
 					
-					break; //para de percorrer a matriz caso a resposta seja obtida
-					
+					break; 
+					//para de percorrer a matriz caso a resposta seja obtida
 				}
 			
-			} else if(strcmp(player[vez], player2) == 0){ //a anÃ¡lise continua se a vez da rodada for do jogador 2 
-				
-				if(pais[cont_matriz_pais][0] == '2'){ //se o nÃºmero encontrado no paÃ­s tiver a numeraÃ§Ã£o 2, a funÃ§Ã£o retornarÃ¡ true, senÃ£o retornarÃ¡ false
+			} else if(strcmp(player[vez], player2) == 0){ 
+			//a analise continua se a vez da rodada for do jogador 2 
+				if(pais[cont_matriz_pais][0] == '2'){
+				//se o numero encontrado no pais tiver a numeracao 2, a funcao retornara true, senao retornara false
 					
 					true_false = true;
 					
-					break; //para de percorrer a matriz caso a resposta seja obtida
-					
+					break; 
+					//para de percorrer a matriz caso a resposta seja obtida
 				} else{
 					
 					true_false = false;
 					
-					break; //para de percorrer a matriz caso a resposta seja obtida
-					
+					break;
+					//para de percorrer a matriz caso a resposta seja obtida
 				}
 				
 			}
@@ -163,7 +164,8 @@ bool teste_dono_pais(char letra){ //funÃ§Ã£o que testa se o paÃ­s pertence
 	return true_false;
 }
 
-bool teste_existencia_pais(char letra){ //função que testa se a letra digitada esta entre A e T maiusculo ou minusculo
+bool teste_existencia_pais(char letra){ 
+//funcao que testa se a letra digitada esta entre A e T maiusculo ou minusculo
 	
 	bool true_false;
 	
@@ -183,28 +185,28 @@ bool teste_vizinhanca_pais(char pais_origem, char pais_destino){
 	
 	bool true_false;
 	
-	if(pais_origem >= 97 && pais_origem <= 116){ //se a letra for minuscula de acordo com a tabela ascii, ela será tranformada em maiuscula para poder ser comparada posteriormente
-		
-		pais_origem = pais_origem - 32; //transforma a letra minuscula em maiuscula
-		
-	} if(pais_destino >= 97 && pais_destino <= 116){ //se a letra for minuscula de acordo com a tabela ascii, ela será tranformada em maiuscula para poder ser comparada posteriormente
-		
-		pais_destino = pais_destino - 32; //transforma a letra minuscula em maiuscula
-		
+	if(pais_origem >= 97 && pais_origem <= 116){ 
+	//se a letra for minuscula de acordo com a tabela ascii, ela sera tranformada em maiuscula para poder ser comparada posteriormente
+		pais_origem = pais_origem - 32; 
+		//transforma a letra minuscula em maiuscula
+	} if(pais_destino >= 97 && pais_destino <= 116){ 
+	//se a letra for minuscula de acordo com a tabela ascii, ela sera tranformada em maiuscula para poder ser comparada posteriormente
+		pais_destino = pais_destino - 32; 
+		//transforma a letra minuscula em maiuscula
 	} if(pais_origem == 'A'){
-		
+	//se o pais de origem for letra 'A', tera como vizinhos os paises 'C' e 'D'
 		if(pais_destino == 'C' || pais_destino == 'D'){
-			
+		//caso o pais de destino seja um de seus vizinhos, true_false recebera true
 			true_false = true;
 			
 		} else{
-			
+		//senao, recebera false	
 			true_false = false;
 			
 		}
 		
 	} else if(pais_origem == 'B'){
-		
+	//a mesma verificacao eh feita para todos os outros paises para checar a vizinhanca
 		if(pais_destino == 'H' || pais_destino == 'C' || pais_destino == 'I'){
 			
 			true_false = true;
@@ -435,24 +437,24 @@ bool teste_vizinhanca_pais(char pais_origem, char pais_destino){
 
 }
 
-bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de cada continente
-	
+bool bonus_tropas_pais(){ 
+	//funcao que adiciona a quantidade de tropas bonus de cada continente e retorna um bool para saber se existe bonus de tropas ou nao
 	bool true_false = false;
 	
 	if(pais[0][0] == '1' && pais[1][0] == '1' && pais[2][0] == '1' && pais[8][0] == '1'){
-		
+	//caso os paises 'A', 'B', 'C' e 'I' estejam sob controle do player 1, este recebera 5 tropas de bonus por dominar a America do Norte
 		qntd_tropas_bonus_player1 += 5;
 		
 		true_false = true;
-	
+		//caso exista bonus de tropas por continente, true_false recebera true. Isso serve para saber se ira existir bonus de tropas ou nao
 	} else if(pais[0][0] == '2' && pais[1][0] == '2' && pais[2][0] == '2' && pais[8][0] == '2'){
-		
+		//a mesma verificacao ocorre para o player 2
 		qntd_tropas_bonus_player2 += 5;
 		
 		true_false = true;
 		
 	} if(pais[3][0] == '1' && pais[4][0] == '1' && pais[9][0] == '1'){
-		
+		//a mesma verificacao ocorre para todos os outros continentes. Essa eh a Europa
 		qntd_tropas_bonus_player1 += 5;
 		
 		true_false = true;
@@ -464,7 +466,7 @@ bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de 
 		true_false = true;
 		
 	} if(pais[5][0] == '1' && pais[6][0] == '1' && pais[7][0] == '1' && pais[10][0] == '1' && pais[11][0] == '1' && pais[12][0] == '1'){
-		
+		//essa eh a Asia
 		qntd_tropas_bonus_player1 = 7;
 		
 		true_false = true;
@@ -476,7 +478,7 @@ bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de 
 		true_false = true;
 		
 	} if(pais[13][0] == '1' && pais[16][0] == '1'){
-		
+		//Essa eh a America do Sul
 		qntd_tropas_bonus_player1 = 2;
 		
 		true_false = true;
@@ -488,7 +490,7 @@ bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de 
 		true_false = true;
 		
 	} if(pais[14][0] == '1' && pais[15][0] == '1' && pais[17][0] == '1'){
-		
+		//Essa eh a Africa
 		qntd_tropas_bonus_player1 = 3;
 		
 		true_false = true;
@@ -500,7 +502,7 @@ bool bonus_tropas_pais(){ //funcao que adiciona a quantidade de tropas bonus de 
 		true_false = true;
 		
 	} if(pais[18][0] == '1' && pais[19][0] == '1'){
-		
+		//Essa eh a Oceania
 		qntd_tropas_bonus_player1 = 2;
 		
 		true_false = true;
