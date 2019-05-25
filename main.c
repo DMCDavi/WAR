@@ -3,7 +3,7 @@
 #include "ferramentas.h"
 #include "rodada.h"
 
-int main(){
+int main(){ //Deu certo
 	
 	cadastro_players();
 	
