@@ -30,6 +30,8 @@ int vez = 0; //armazenará os valores 0 ou 1, que servirão como parâmetro pra 
 
 int tropas_pais[21] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; //tropas_pais armazena a quantidade de tropas de cada país, onde cada valor do vetor representa um pais
 
+unsigned int posicao_pais_encontrado_ataque = 0;
+
 unsigned int qntd_tropas_bonus_player1 = 0, qntd_tropas_bonus_player2 = 0;
 
 unsigned int qntd_paises_player1 = 0, qntd_paises_player2 = 0; //representam a quantidade de paises que cada player possui
