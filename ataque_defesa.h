@@ -1,30 +1,33 @@
 //dados de ataque e defesa (apos ter add as tropas aos seus devidos territorios)
-void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
+void ataque_defesa (){
+	int qtd_dados_ataque;
+	int qtd_dados_defesa;
 	int cont_pais, cont_sorteio_dados, posicao_pais_encontrado_ataque, posicao_pais_encontrado_defesa, dado_ataque[3], dado_defesa[3]; //contadores para o for e dados de defesa e ataque
 	int maior_ataque[3] = {0, 0, 0}, maior_defesa[3] = {0, 0, 0}; //vetores que armazenarao valores sorteados em ordem crescente
-	char pais_desejado_atacante[2], pais_desejado_atacado[2]; //variaveis que receberao os nomes dos paises de ataque e defesa selecionados pelo player
+	char pais_desejado_atacante, pais_desejado_atacado; //variaveis que receberao os nomes dos paises de ataque e defesa selecionados pelo player
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n");
 	while (pais_desejado_atacante != '0' || pais_desejado_atacado != '0'){ // LOOPING DO ATAQUE
 		
 		printf("%s, Digite a letra do pais com o qual deseja atacar: ", player[vez]);
 		scanf("%s", pais_desejado_atacante); //variavel que recebe o pais de ataque
-		fflsuh(stdin);		
+		fflush(stdin);		
 		
 		//parte de verificacao de pertencimento do pais ao jogador :
 		if (teste_dono_pais (pais_desejado_atacante)){ //caso o pais pertenca ao player q ataca...
 									
-			//pesquisa do país correspondente 
-			if(pais_desejado_atacante >= 97 && pais_desejado_atacante <= 116){
+			//pesquisa do paÃ­s correspondente 
+			if(pais_desejado_atacante >= 97 && pais_desejado_atacante <= 116){ //entre a e t (minÃºsculo mesmo)
 				pais_desejado_atacante = pais_desejado_atacante - 32; //transformando para caracter maiusculo
 			}
+		
 			for(cont_pais = 0; cont_pais < 21; cont_pais++){ //relacionando com a posicao do pais e as tropas
-				if(strcmp(pais[cont_pais][1], pais_desejado_atacante) == 0) {
+				if(pais[cont_pais][1] == pais_desejado_atacante) {
 					posicao_pais_encontrado_ataque = cont_pais;
 				}
 			}
 		
 			//se pertencer ao jogador:
-			//fará a verificacao se o numero de tropas eh suficiente para atacar
+			//farÃ¡ a verificacao se o numero de tropas eh suficiente para atacar
 			if (tropas_pais[posicao_pais_encontrado_ataque] != 1) { //caso a qtd de tropas seja suficiente...
 				//determinando a quantidade de dados maximo do jogador
 				if(tropas_pais[posicao_pais_encontrado_ataque] == 2) qtd_dados_ataque = 1;
@@ -38,26 +41,26 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 				
 				// verificando pertencimento de do pais a ser atacado (inimigo)
 				if (teste_dono_pais (pais_desejado_atacado)) { //se pertencer ao inimigo
-					//caso o pais ÃƒÂ± pertenca ao player q defende...
-					//pesquisa o pais correspondente 
+					//caso o pais atacado pertenca ao player q defende...
+					//pesquisa o pais correspondente na matriz
 					if(pais_desejado_atacado >= 97 && pais_desejado_atacado <= 116){
 						pais_desejado_atacado = pais_desejado_atacado - 32; //transformando para caracter maiusculo
 					}
 					for(cont_pais = 0; cont_pais < 21; cont_pais++){
-						if(strcmp(pais[cont_pais][1], pais_desejado_atacado) == 0) {
+						if(pais[cont_pais][1] == pais_desejado_atacado) {
 							posicao_pais_encontrado_defesa = cont_pais;
 						}
 					}
-					// colocar funcao de teste de vizinhanÃ§a
+					// colocar funcao de teste de vizinhanÃƒÂ§a
 				
 					//determinando a quantidade de dados para defesa do inimigo
-					if(tropas_pais[posicao_pais_encontrado_defesa] == 1) {
+					if(tropas_pais[posicao_pais_encontrado_defesa] == 1) { //para 1 dado
 						qtd_dados_defesa = 1;
 					}
-					else if (tropas_pais[posicao_pais_encontrado_defesa] == 2){
+					else if (tropas_pais[posicao_pais_encontrado_defesa] == 2){ // para 2 dados
 			 			qtd_dados_defesa = 2;
 					}
-					else if (tropas_pais[posicao_pais_encontrado_defesa] >= 3){
+					else if (tropas_pais[posicao_pais_encontrado_defesa] >= 3){ // para 3 dados
 						qtd_dados_defesa = 3;
 					}			
 				
@@ -190,12 +193,12 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 	
 					//comparando valores de ataque e defesa (quem ganha/perde territorio)
 					if(maior_ataque[2]<= maior_defesa[2]){ //perda ataque
-						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1; //redução de tropas
+						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1; //reduÃ§Ã£o de tropas
 					}
 					
 					else{ //ganho ataque
-						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1; //redução de tropas
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa ñ tiver mais tropas...
+						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1; //reduÃ§Ã£o de tropas
+						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa Ã± tiver mais tropas...
 							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
 								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
 							}
@@ -210,15 +213,15 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 					
 					
 					if(maior_ataque[1]<= maior_defesa[1] && (maior_ataque[1] != 0 || maior_defesa[1] != 0)){ //perda ataque
-					// o "!= 0" é para que ñ compare com as posicoes do vetor q ñ foram preenchidas, caso a defesa ou ataque ñ possua 3 dados
+					// o "!= 0" Ã© para que Ã± compare com as posicoes do vetor q Ã± foram preenchidas, caso a defesa ou ataque Ã± possua 3 dados
 						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
 					}
 		
 					else{ //ganho ataque
 						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa ñ tiver mais tropas...
+						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa Ã± tiver mais tropas...
 							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
-								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territÃ³rio do player2
+								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territÃƒÂ³rio do player2
 							}
 							else if(strcmp(player[vez], player2) == 0){ //se for player 2 
 								pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
@@ -231,13 +234,13 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 		
 					
 					if(maior_ataque[0]<= maior_defesa[0] && (maior_ataque[0] != 0 || maior_defesa[0] != 0)){ //perda ataque
-					// o "!= 0" é para que ñ compare com as posicoes do vetor q ñ foram preenchidas, caso a defesa ou ataque ñ possua 3 dados
+					// o "!= 0" Ã© para que Ã± compare com as posicoes do vetor q Ã± foram preenchidas, caso a defesa ou ataque Ã± possua 3 dados
 						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
 					}
 		
 					else{ //ganho ataque
 						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa ñ tiver mais tropas...
+						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa Ã± tiver mais tropas...
 							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
 								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
 							}
@@ -253,7 +256,7 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 						
 				}//FIM IF PERTENCIMENTO AO INIMIGO
 	
-				else{ //caso o país ñ pertença ao inimigo
+				else{ //caso o paÃ­s Ã± pertenÃ§a ao inimigo
 					printf("[ERRO] Nao eh possivel selecionar esse pais! Por favor, tente outro.\n");
 				}
 		
@@ -264,7 +267,7 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 			}
 		
 		} //FIM IF PERTENCIMENTO  DO PAIS ATACANTE
-		else{ //caso o pais Ã± pertenÃ§a ao jogador q estÃ¡ jogando
+		else{ //caso o pais ÃƒÂ± pertenÃƒÂ§a ao jogador q estÃƒÂ¡ jogando
 			printf("[ERRO] Nao eh possivel selecionar esse pais! Por favor, tente outro.\n");
 		}
 	
@@ -272,7 +275,4 @@ void Funcao_ataque_defesa (int qtd_dados_ataque, int qtd_dados_defesa){
 				
 	} //fim do while do ataque
 	
-}//fim da funcao (void)
-	
-	
-	
+}//fim da funcao (void)	
