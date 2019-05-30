@@ -1,6 +1,6 @@
 //Essa biblioteca contém as funções que serão usadas apenas no inicio do jogo
 
-void cadastro_players(){ //função que irá cadastrar os players em nomes de usuario
+void cadastro_players(){ //funÃ§Ã£o que irÃ¡ cadastrar os players em nomes de usuario
 	
 	printf("Bem-vindo ao MINI WAR.\n");
 		
@@ -12,7 +12,24 @@ void cadastro_players(){ //função que irá cadastrar os players em nomes de us
 	
 	scanf(" %[^\n]s", &player2);
 	
+	if(strcasecmp(player1,player2) == 0){
+		printf("[ERRO] OS DOIS NOMES SAO IGUAIS. POR FAVOR DIGITE NOVAMENTE\n");
+		system("pause");
+		
+		system("cls");
+		
+			printf("Bem-vindo ao MINI WAR.\n");
+		
+		printf("Player 1, digite seu username: ");
+	
+	scanf(" %[^\n]s", &player1);
+	
+	printf("Player 2, digite seu username: ");
+	
+	scanf(" %[^\n]s", &player2);
+	
 	system("pause");
+	}
 	
 }
 
