@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 #include <stdbool.h>
+#include <windows.h>
 
 #define AUX 13
 #define TERRA 10
