@@ -28,13 +28,14 @@ void remanejar_tropas(){
 		scanf("%s", &posicao_pais1); 
 		fflush(stdin);
 		
+		
 		//VERFICA EXISTENCIA PAIS
 		while(!teste_existencia_pais(posicao_pais1) || !teste_dono_pais(posicao_pais1)){
 			fflush(stdin);
 			printf("[ERRO - O PAIS NAO EXISTE OU NAO TE PERTENCE]\n");
 			printf("Digite a letra do pais que deseja a saida de tropas:\n");
 			scanf("%s", &posicao_pais1); 
-			fflush(stdin);
+			fflush(stdin);	
 		}
 		
 		printf("%s,Digite a letra do pais que deseja a entrada de tropas:\n", player[vez]);
@@ -52,11 +53,34 @@ void remanejar_tropas(){
 		if(teste_vizinhanca_pais(posicao_pais1,posicao_pais2)){
 			//insire a quantidade de tropas pra remanejar
 			int qntdTropasRemanejar =0;
+			int qtd_Tropas_Pais_Entrada = 0;
 			printf("insira a quantidade de tropas que voce quer remanejar\n");
 			scanf("%d", &qntdTropasRemanejar);
+			
+			//VERIFICAR SE ELE PODE FAZER O REMANEJAMENTO	
+			if(posicao_pais1 >= 65 && posicao_pais1 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
+				num_pais1 = posicao_pais1 - 65;
+				
+			} else if(posicao_pais1 >= 97 && posicao_pais1 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+				
+				num_pais1 = posicao_pais1 - 97;
+								
+			}
+			
+			int qtd_Tropas_Pais_Saida = tropas_pais[num_pais1];
+			
+			if(posicao_pais2 >= 65 && posicao_pais2 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+				
+				num_pais2 = posicao_pais2 - 65;
+				
+			} else if(posicao_pais2 >= 97 && posicao_pais2 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+				
+				num_pais2 = posicao_pais2 - 97;
+				
+			}
 		
-			//VERIFICAR SE ELE PODE FAZER O REMANEJAMENTO
+		
 			
 			//PEGA QUANTIDADE DE TROPAS DO PAIS
 			
