@@ -10,8 +10,7 @@ void ataque_defesa (){
 		
 		printf("%s, Digite a letra do pais com o qual deseja atacar:\n", player[vez]);
 		fflush(stdin);
-		//gets(pais_desejado_atacante);	
-		scanf("% s", pais_desejado_atacante); //variavel que recebe o pais de ataque //quando coloca assim %s ñ funciona
+		scanf("% s", pais_desejado_atacante); //variavel que recebe o pais de ataque // ñ funciona assim "%s"
 		fflush(stdin);		
 		
 		//verificacao se o país existe ou n
