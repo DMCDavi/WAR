@@ -1,18 +1,15 @@
 //dados de ataque e defesa (apos ter add as tropas aos seus devidos territorios)
 void ataque_defesa (){
-	int qtd_dados_ataque, qtd_dados_defesa; //variaveis q calculam a qtd de dados de ataque X defesa
-	int cont_vitoria_ataque, cont_vitoria_defesa, cont_sorteio_dados, posicao_pais_encontrado_ataque, posicao_pais_encontrado_defesa, dado_ataque[3], dado_defesa[3]; //contadores para o for e dados de defesa e ataque
+	int qtd_comparacao, qtd_dados_ataque, qtd_dados_defesa; //variaveis q calculam a qtd de dados de ataque X defesa e dps comparam
+	int cont_sorteio_dados, posicao_pais_encontrado_ataque, posicao_pais_encontrado_defesa, dado_ataque[3], dado_defesa[3]; //contadores para o for 
 	int maior_ataque[3] = {0, 0, 0}, maior_defesa[3] = {0, 0, 0}; //vetores que armazenarao valores sorteados em ordem crescente
 	char pais_desejado_atacante, pais_desejado_atacado;  //variaveis que receberao os nomes dos paises de ataque e defesa selecionados pelo player
 	char resposta_ataque[4]; //resposta do novo ataque
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n");
 	
 	while (pais_desejado_atacante != '0' || pais_desejado_atacado != '0' || strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
-		cont_vitoria_ataque = 0; //zerando cont para printf do ataque-defesa
-		cont_vitoria_defesa = 0;
-		
+				
 		printf("%s, Digite a letra do pais com o qual deseja atacar:\n", player[vez]);
-		fflush(stdin);
 		scanf("%c", &pais_desejado_atacante); //variavel que recebe o pais de ataque // ñ funciona assim "%s"
 		fflush(stdin);		
 		
@@ -78,7 +75,7 @@ void ataque_defesa (){
 					for (cont_sorteio_dados=0; cont_sorteio_dados<qtd_dados_ataque; cont_sorteio_dados++){
 						srand(time(NULL));
 						dado_ataque[cont_sorteio_dados] = (rand() % 5) + 1;
-						printf("%d ", dado_ataque[cont_sorteio_dados]);
+						//printf("%d ", dado_ataque[cont_sorteio_dados]);
 					}
 	
 					//colocando em ORDEM CRESCENTE os numeros sorteados pelos dados de ataque
@@ -120,8 +117,7 @@ void ataque_defesa (){
 							maior_ataque[0] = dado_ataque[0];
 							maior_ataque[1] = dado_ataque[1];
 							maior_ataque[2] = dado_ataque[2];
-						}
-						printf("\tAtaque: %d, %d, %d\n", maior_ataque[0], maior_ataque[1], maior_ataque[2]); //mostra os valores obtidos pelos dados de ataque
+						}					
 					}
 					
 					
@@ -133,13 +129,11 @@ void ataque_defesa (){
 							else{ // a<b 0<1
 								maior_ataque[1] = dado_ataque[0];
 								maior_ataque[2] = dado_ataque[1];
-							}
-							printf("\tAtaque: %d, %d\n", maior_ataque[1], maior_ataque[2]); //mostra os valores obtidos pelos dados
+							}		
 						}
 						
 						if(qtd_dados_ataque == 1){ //para apenas 1 dado de ataque
 							maior_ataque[2]= dado_ataque[0];
-							printf("\tAtaque: %d\n", maior_ataque[2]); //mostra o valor obtido pelo dado
 						}
 								
 			
@@ -148,7 +142,7 @@ void ataque_defesa (){
 					for (cont_sorteio_dados = 0; cont_sorteio_dados < qtd_dados_defesa; cont_sorteio_dados++){
 						srand(time(NULL));
 						dado_defesa[cont_sorteio_dados] = (rand() % 5) + 1;
-						printf("%d ", dado_defesa[cont_sorteio_dados]);
+						//printf("%d ", dado_defesa[cont_sorteio_dados]);
 					}
 		
 					//colocando em ordem crescente os numeros sorteados pelos dados de defesa
@@ -190,7 +184,6 @@ void ataque_defesa (){
 								maior_defesa[1] = dado_defesa[1];
 								maior_defesa[2] = dado_defesa[2];
 							}
-							printf("\tDefesa: %d, %d, %d\n", maior_defesa[0], maior_defesa[1], maior_defesa[2]); //mostra o valor obtido pelo sorteio da defesa
 						}
 	
 	
@@ -202,107 +195,59 @@ void ataque_defesa (){
 								else{ // a<b 0<1
 									maior_defesa[1] = dado_defesa[0];
 									maior_defesa[2] = dado_defesa[1];
-								}
-							printf("\tDefesa: %d, %d\n", maior_defesa[1], maior_defesa[2]); //mostra os valores obtidos pelos dados
+								}						
 							}
 						
 							if(qtd_dados_defesa == 1){ //para apenas 1 dado de defesa
 								maior_defesa[2]= dado_defesa[0];
-								printf("\tDefesa: %d\n", maior_defesa[2]); //mostra o valor obtido pelo dado
 							}
 								
 	
-					//comparando valores de ataque e defesa (quem ganha/perde territorio)
-					//todas as possibilidades terao essa comparacao
-					if(maior_ataque[2]<= maior_defesa[2]){ //perda ataque
-						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1; //reduÃ§Ã£o de tropas
-						cont_vitoria_defesa++;
-						//atualizando o mapa...
-						system("cls"); //limpando a tela
-						print_mapa(); //reimprime o mapa
+					//comparando e imprimindo valores de ataque e defesa (quem ganha/perde territorio)
+				
+					if(qtd_dados_ataque>=qtd_dados_defesa){
+						qtd_comparacao = qtd_dados_defesa;
+					}
+					else{
+						qtd_comparacao = qtd_dados_ataque;
 					}					
-					else{ //ganho ataque
-						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1; //reducao de tropas
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
-							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
-								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
-							}
-							else if(strcmp(player[vez], player2) == 0){ //se for player 2 
-								pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
-							}
-							cont_vitoria_ataque++;
-							//atualizando o mapa...
-							system("cls"); //limpando a tela
-							print_mapa(); //reimprime o mapa
-						}
-					}
-					
-					
-					//para mais de 1 dado dos dois lados
-					if(maior_ataque[1]<= maior_defesa[1] && maior_ataque[1] != 0 && maior_defesa[1] != 0){ //perda ataque
-					//o "!= 0" eh para que nao compare com as posicoes do vetor q nao foram preenchidas, caso a defesa ou ataque nao possua 3 dados
-						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
-						cont_vitoria_defesa++;
-						//atualizando o mapa...
-						system("cls"); //limpando a tela
-						print_mapa(); //reimprime o mapa
-					}		
-					else{ //ganho ataque
-						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
-							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
-								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
-							}
-							else if(strcmp(player[vez], player2) == 0){ //se for player 2 
-								pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
-							}
-							cont_vitoria_ataque++;
-							//atualizando o mapa...
-							system("cls"); //limpando a tela
-							print_mapa(); //reimprime o mapa
-						}
-					}
-		
-					
-					//para 3 dados dos dois lados
-					if(maior_ataque[0]<= maior_defesa[0] && maior_ataque[0] != 0 && maior_defesa[0] != 0){ //perda ataque
-					//o "!= 0" eh para que nao compare com as posicoes do vetor q nao foram preenchidas, caso a defesa ou ataque nao possua 3 dados
-						tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
-						cont_vitoria_defesa++;
-						//atualizando o mapa...
-						system("cls"); //limpando a tela
-						print_mapa(); //reimprime o mapa
-					}		
-					else{ //ganho ataque
-						tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
-						if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa Ã± tiver mais tropas...
-							if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
-								pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
-							}
-							else if(strcmp(player[vez], player2) == 0){ //se for player 2 
-								pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
-							}
-							cont_vitoria_ataque++;
-							//atualizando o mapa...
-							system("cls"); //limpando a tela
-							print_mapa(); //reimprime o mapa							
-						}
-						
-					}
-					//imprimindo placar...
 					if(strcmp(player[vez], player1) == 0){
-						printf("\t%s\tx\t%s\n", player1, player2);
+						printf("\n\n\t%s\tx\t%s\n", player1, player2);
 					}
 					else if(strcmp(player[vez], player2) == 0){
-						printf("\t%s\tx\t%s\n", player2, player1);
-					}					
-					printf("\t%d\tx\t%d\n", cont_vitoria_ataque, cont_vitoria_defesa);
-					if(cont_vitoria_ataque <= cont_vitoria_defesa){
+						printf("\n\n\t%s\tx\t%s\n", player2, player1);
+					}
+					for(cont_sorteio_dados=2; cont_sorteio_dados > qtd_comparacao; cont_sorteio_dados--){
+						printf("\t%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
+						if(maior_ataque[cont_sorteio_dados] <= maior_defesa[cont_sorteio_dados]){ //ganho defesa
+							tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] -1;
+						}
+						else{ //ganho ataque
+							tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
+							if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
+								if(strcmp(player[vez], player1) == 0){ //se for a vez do player 1
+									pais[posicao_pais_encontrado_defesa][0] = '1'; //player1 conquista o territorio do player2
+								}
+								else if(strcmp(player[vez], player2) == 0){ //se for player 2 
+									pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
+								}			
+								
+							}
+						}						
+					}
+					//atualizando o mapa...
+					system("cls"); //limpando a tela
+					print_mapa(); //reimprime o mapa
+
+										
+				
+					/*if(cont_vitoria_ataque <= cont_vitoria_defesa){
 						printf("%s, vc nao obteve sucesso nesse ataque!\n", player[vez]);	
 					}
 					else{
 						printf("%s, vc obteve sucesso nesse ataque!\n", player[vez]);	
-					}
+					}*/
+					
 					//perguntando se deseja novo ataque
 					printf("\nDeseja atacar novamente? [SIM][NAO]\n");
 					scanf("%s", resposta_ataque);
