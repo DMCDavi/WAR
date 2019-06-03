@@ -1,9 +1,16 @@
-//Essa biblioteca contém as funções que serão usadas como ferramentas úteis às outras
+//Essa biblioteca contÃ©m as funÃ§Ãµes que serÃ£o usadas como ferramentas Ãºteis Ã s outras
+void text_color(int color){
+	
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	
+}
 
 void print_mapa(){ 
-	//função que printa na tela o mapa
-	system("color 1F"); 
+	//funÃ§Ã£o que printa na tela o mapa
+	//system("color 1F"); 
 	//define as cores do mapa
+	text_color(15);
+	printf("========================================================================================================================================================================\n");
 	int cont_tropas = 0, cont_linhas, cont_colunas, cont_pais = 0, mapa[40][75] = {
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
@@ -46,7 +53,8 @@ void print_mapa(){
 4,4,4,4,4,4,4,4,4,4,4,4,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
 4,4,4,4,4,4,4,4,4,4,4,4,4,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 };
-	
+	//NOTA MENTAL PARA JOAO COLOCAR UM TEXT COLOR EM CADA QUE AI DA CERTO PORA;
+	text_color(18);
 	for(cont_linhas = 0; cont_linhas < 40; cont_linhas++ ){ 
 		//percorre a matriz mapa toda e substitui seus valores por um caracter especial
 		for(cont_colunas = 0 ; cont_colunas < 75; cont_colunas++ ){
@@ -93,16 +101,18 @@ void print_mapa(){
 									
 			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
 						
+						
 				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	
-				//quando o valor 0 é encontrado na matriz, printa a identificação de cada país seguido da quantidade de tropas
+				//quando o valor 0 Ã© encontrado na matriz, printa a identificaÃ§Ã£o de cada paÃ­s seguido da quantidade de tropas
 				cont_pais++;
 				
 				cont_tropas++;
 			}
 				
 		}printf("\n");
-		
-	} printf("======================================================================================================================================================\n");
+				
+	}text_color(15); 
+	printf("========================================================================================================================================================================\n");
 	
 }
 
@@ -121,7 +131,7 @@ bool teste_dono_pais(char letra){
 	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ 
 	//percorre os 20 paises da matriz pais[21][4]
 		if(pais[cont_matriz_pais][1] == letra){ 
-		//caso encontre a letra digitada, prosseguira a anÃ¡lise
+		//caso encontre a letra digitada, prosseguira a anÃƒÂ¡lise
 			if(strcmp(player[vez], player1) == 0){ 
 			//a analise continua se a vez da rodada for do jogador 1
 				if(pais[cont_matriz_pais][0] == '1'){ 
@@ -516,3 +526,5 @@ bool bonus_tropas_pais(){
 	} return true_false;
 	
 }
+
+
