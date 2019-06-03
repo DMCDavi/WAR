@@ -7,7 +7,7 @@
 #include "inicio.h"
 #include "ferramentas.h"
 #include "rodada.h"
-//Essa biblioteca contém as funções principais de cada rodada do jogo
+//Essa biblioteca contÃ©m as funÃ§Ãµes principais de cada rodada do jogo
 void remanejar_tropas(){ 
 	
 	char posicao_pais1, posicao_pais2; //vai receber a letra do pais 
@@ -22,7 +22,7 @@ void remanejar_tropas(){
 	fflush(stdin);
 	
 	//loopin pra continuar a remaneja
-	while(strcmp(resp,"sim") == 0 || strcmp(resp,"SIM") == 0 || strcmp(resp,"Sim") == 0 || strcmp(resp,"SIm") == 0 || strcmp(resp,"sIM") == 0){
+	while(strcmp(resp,"sim") == 0 || strcmp(resp,"SIM") == 0 || strcmp(resp,"Sim") == 0 || strcmp(resp,"SIm") == 0 || strcmp(resp,"sIM") || strcmp(resp, "siM") == 0){
 		fflush(stdin);
 		printf("Digite a letra do pais que deseja a saida de tropas:\n");
 		scanf("%s", &posicao_pais1); 
@@ -42,7 +42,7 @@ void remanejar_tropas(){
 		scanf("%s", &posicao_pais2);
 		 
 		//VERFICA EXISTENCIA PAIS		
-		while(!teste_existencia_pais(posicao_pais2) || !teste_dono_pais(posicao_pais2)){
+		while(!teste_existencia_pais(posicao_pais2) || !teste_dono_pais(posicao_pais2)){ // testara se o pais existe ou se o joagdor da vez possui o pais
 			fflush(stdin);
 			printf("[ERRO - O PAIS NAO EXISTE OU NAO TE PERTENCE]\n");
 			printf("Digite a letra do pais que deseja a entrada de tropas:\n");
@@ -58,11 +58,11 @@ void remanejar_tropas(){
 			scanf("%d", &qntdTropasRemanejar);
 			
 			//VERIFICAR SE ELE PODE FAZER O REMANEJAMENTO	
-			if(posicao_pais1 >= 65 && posicao_pais1 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			if(posicao_pais1 >= 65 && posicao_pais1 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais1 = posicao_pais1 - 65;
 				
-			} else if(posicao_pais1 >= 97 && posicao_pais1 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			} else if(posicao_pais1 >= 97 && posicao_pais1 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais1 = posicao_pais1 - 97;
 								
@@ -70,11 +70,11 @@ void remanejar_tropas(){
 			
 			int qtd_Tropas_Pais_Saida = tropas_pais[num_pais1];
 			
-			if(posicao_pais2 >= 65 && posicao_pais2 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			if(posicao_pais2 >= 65 && posicao_pais2 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais2 = posicao_pais2 - 65;
 				
-			} else if(posicao_pais2 >= 97 && posicao_pais2 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			} else if(posicao_pais2 >= 97 && posicao_pais2 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais2 = posicao_pais2 - 97;
 				
@@ -96,4 +96,8 @@ void remanejar_tropas(){
 		scanf("%s",resp);
 		fflush(stdin);
 	}		
+	while(strcmp(resp,"nao") == 0 || strcmp(resp,"NAO") == 0 || strcmp(resp,"Nao") == 0 || strcmp(resp,"NAo") == 0 || strcmp(resp,"naO") || strcmp(resp, "nAO") == 0){
+		print("Seu turno acabou, indo para o proximo player!\n");
+	}
+	
 }
