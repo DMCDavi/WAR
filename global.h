@@ -22,6 +22,8 @@
 #define CANTSUPDIR 6
 #define PAIS 0
 
+int menu = 1; //variavel de opcao de escolha do menu
+
 char pais[21][4]; //variÃ¡vel que serÃ¡ usada na funÃ§Ã£o nome_paises para receber a nomeaÃ§Ã£o de cada paÃ­s
 
 char num_player[2], letra_pais[3]; //num_player armazenarÃ¡ os numeros 1 ou 2 referentes a cada player; letra_pais armazenarÃ¡ as letras que representarÃ£o cada paÃ­s
