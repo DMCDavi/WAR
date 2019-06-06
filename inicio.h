@@ -1,21 +1,29 @@
-//Essa biblioteca contÃ©m as funÃ§Ãµes que serÃ£o usadas apenas no inicio do jogo
-#include <dos.h>
-#include <time.h>
-int EsperarTempo(int i)
+//Essa biblioteca contÃƒÂ©m as funÃƒÂ§ÃƒÂµes que serÃƒÂ£o usadas apenas no inicio do jogo
+
+/*int EsperarTempo(int i)
 {
 
 	for(i; i >= 0; i--)
 	{
-		printf("%i\n",i); // Escreve na tela o número atual da 'contagem'
+		printf("%i\n",i); // Escreve na tela o nÃºmero atual da 'contagem'
 		//Delay(i*1000); // Espera 1 segundo
 	}
+}*/
+int Menu_inicial(){
+	
+	printf("\t\t\t\t\t\t\t\t\t  Escolha a opcao \n\n");
+	printf("\t\t\t\t\t\t\t\t\t   (0) - Regras \n");
+	printf("\t\t\t\t\t\t\t\t\t   (1) - jogar \n");
+	scanf("%d",&menu);
+	
+	return menu;
 }
-void cadastro_players(){ //funÃƒÂ§ÃƒÂ£o que irÃƒÂ¡ cadastrar os players em nomes de usuario
-	
-	printf("\t\t\t\t\tBem-vindo ao MINI WAR. \\o/ \\o/ \\o/   \n\n");
+void cadastro_players(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que irÃƒÆ’Ã‚Â¡ cadastrar os players em nomes de usuario
+	system("cls");
+	printf("\t\t\t\t\t\t\t\t Bem-vindo ao MINI WAR! \\o/ \\o/ \\o/   \n\n");
+	Menu_inicial();
 	system("pause");
-	system("cls");	
-	
+	system("cls");		
 	//int k = 9;
 	//sleep(2000);
 	//EsperarTempo(k);
