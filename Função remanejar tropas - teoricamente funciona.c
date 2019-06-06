@@ -7,7 +7,7 @@
 #include "inicio.h"
 #include "ferramentas.h"
 #include "rodada.h"
-//Essa biblioteca contÃ©m as funÃ§Ãµes principais de cada rodada do jogo
+//Essa biblioteca contÃƒÂ©m as funÃƒÂ§ÃƒÂµes principais de cada rodada do jogo
 void remanejar_tropas(){ 
 	
 	char posicao_pais1, posicao_pais2; //vai receber a letra do pais 
@@ -22,7 +22,7 @@ void remanejar_tropas(){
 	fflush(stdin);
 	
 	//loopin pra continuar a remaneja
-	while(strcmp(resp,"sim") == 0 || strcmp(resp,"SIM") == 0 || strcmp(resp,"Sim") == 0 || strcmp(resp,"SIm") == 0 || strcmp(resp,"sIM") || strcmp(resp, "siM") == 0){
+	while(srtcasecmp(resp,"sim") == 0){
 		fflush(stdin);
 		printf("Digite a letra do pais que deseja a saida de tropas:\n");
 		scanf("%s", &posicao_pais1); 
@@ -37,6 +37,7 @@ void remanejar_tropas(){
 			scanf("%s", &posicao_pais1); 
 			fflush(stdin);	
 		}
+		printf("\n========================================================\n");
 		
 		printf("%s,Digite a letra do pais que deseja a entrada de tropas:\n", player[vez]);
 		scanf("%s", &posicao_pais2);
@@ -53,16 +54,16 @@ void remanejar_tropas(){
 		if(teste_vizinhanca_pais(posicao_pais1,posicao_pais2)){
 			//insire a quantidade de tropas pra remanejar
 			int qntdTropasRemanejar =0;
-			int qtd_Tropas_Pais_Entrada = 0;
 			printf("insira a quantidade de tropas que voce quer remanejar\n");
 			scanf("%d", &qntdTropasRemanejar);
 			
-			//VERIFICAR SE ELE PODE FAZER O REMANEJAMENTO	
-			if(posicao_pais1 >= 65 && posicao_pais1 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+
+			//PEGA QUANTIDADE DE TROPAS DO PAIS 1
+			if(posicao_pais1 >= 65 && posicao_pais1 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais1 = posicao_pais1 - 65;
 				
-			} else if(posicao_pais1 >= 97 && posicao_pais1 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			} else if(posicao_pais1 >= 97 && posicao_pais1 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais1 = posicao_pais1 - 97;
 								
@@ -70,34 +71,51 @@ void remanejar_tropas(){
 			
 			int qtd_Tropas_Pais_Saida = tropas_pais[num_pais1];
 			
-			if(posicao_pais2 >= 65 && posicao_pais2 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			//PEGA QUANTIDADE DE TROPAS DO PAIS 2
+			if(posicao_pais2 >= 65 && posicao_pais2 <= 84){ //se a letra digitada estiver entre A e T maiusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais2 = posicao_pais2 - 65;
 				
-			} else if(posicao_pais2 >= 97 && posicao_pais2 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
+			} else if(posicao_pais2 >= 97 && posicao_pais2 <= 116){ //se a letra digitada estiver entre a e t minusculas, a variavel num_pais vai armazanar um numero entre 0 e 19 que serÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ usada posteiormente para representar as tropas de cada pais no vetor tropas_pais[21]
 				
 				num_pais2 = posicao_pais2 - 97;
 				
 			}
-		
-		
 			
-			//PEGA QUANTIDADE DE TROPAS DO PAIS
-			
-			//REMANEJAR TROPAS	
+			int qtd_Tropas_Pais_Entrada = tropas_pais[num_pais2];
+			printf("\n========================================================\n");
+			printf("[Tropas pais saida]: %d\n", qtd_Tropas_Pais_Saida);
+			printf("[Tropas pais entrada]: %d\n", qtd_Tropas_Pais_Entrada);
+			printf("\n========================================================\n");
+
+			//VERIFICAR SE ELE PODE FAZER O REMANEJAMENTO	
+			if(qtd_Tropas_Pais_Saida > 1 && (qtd_Tropas_Pais_Saida - qntdTropasRemanejar > 1){
+				
+				qtd_Tropas_Pais_Saida-= qntdTropasRemanejar;
+				
+				qtd_Tropas_Pais_Entrada+= qntdTropasRemanejar;
+				
+				tropas_pais[num_pais1] = qtd_Tropas_Pais_Saida;
+				
+				tropas_pais[num_pais2] = qtd_Tropas_Pais_Entrada;
+				
+			}else{
+				printf("[ERRO - NAO HA TROPAS SUFICIENTES PARA REMANEJAMENTO!]\n");
+				continue;
+			}
 		}else{
 			printf("[ERRO - OS PAISES SELECIONADOS NAO PODEM FAZER DESLOCAMENTO]\n");
 			continue;
 		}
 		
+		system("cls");
+		print_mapa()
 		
+		printf("\n========================================================\n");
 		fflush(stdin);
 		printf("Deseja remanejar mais? [sim][nao]\n");
 		scanf("%s",resp);
-		fflush(stdin);
-	}		
-	while(strcmp(resp,"nao") == 0 || strcmp(resp,"NAO") == 0 || strcmp(resp,"Nao") == 0 || strcmp(resp,"NAo") == 0 || strcmp(resp,"naO") || strcmp(resp, "nAO") == 0){
-		print("Seu turno acabou, indo para o proximo player!\n");
 	}
-	
+			
+	printf("Seu turno acabou, indo para o proximo player!\n");	
 }
