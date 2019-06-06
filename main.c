@@ -6,21 +6,15 @@
 
 int main(){
 	
-	int menu,cont;
+	if(Menu_inicial == 0){
+	// as regras vao entrar aqui, colocarei-as assim que eu tiver tempo e principalmente paciencia :)
+		printf("regras vou botar depois\n");
+		system("pause");
+		system("cls");
+		menu = 1;	
+	}	
 	
-	printf("Digite 0 para as regras ou digite qualquer outro numero para jogar:\n");
-	
-	scanf("%d",&menu);
-	
-		if(menu == 0){
-		// as regras vao entrar aqui, colocarei-as assim que eu tiver tempo e principalmente paciencia :)
-			printf("regras vou botar depois\n");
-			system("pause");
-			system("cls");
-			menu = 1;	
-		}	
-	
-	if(menu != 0){
+	if(Menu_inicial != 0){
 	
 	cadastro_players();
 	
