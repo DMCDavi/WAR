@@ -1,4 +1,4 @@
-//Essa biblioteca contÃ©m as funÃ§Ãµes que serÃ£o usadas como ferramentas Ãºteis Ã s outras
+//Essa biblioteca contÃƒÂ©m as funÃƒÂ§ÃƒÂµes que serÃƒÂ£o usadas como ferramentas ÃƒÂºteis ÃƒÂ s outras
 void text_color(int color){
 	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -6,7 +6,7 @@ void text_color(int color){
 }
 
 void print_mapa(){ 
-	//funÃ§Ã£o que printa na tela o mapa
+	//funÃƒÂ§ÃƒÂ£o que printa na tela o mapa
 	//system("color 1F"); 
 	//define as cores do mapa
 	text_color(15);
@@ -54,56 +54,56 @@ void print_mapa(){
 4,4,4,4,4,4,4,4,4,4,4,4,4,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4
 };
 	//NOTA MENTAL PARA JOAO COLOCAR UM TEXT COLOR EM CADA QUE AI DA CERTO PORA;
-	text_color(18);
+	
 	for(cont_linhas = 0; cont_linhas < 40; cont_linhas++ ){ 
 		//percorre a matriz mapa toda e substitui seus valores por um caracter especial
 		for(cont_colunas = 0 ; cont_colunas < 75; cont_colunas++ ){
 			
 			if(mapa[cont_linhas][cont_colunas] == NEVE){
-				
+				text_color(2);
 				printf("%c%c",219,219);
 					
 			}else if(mapa[cont_linhas][cont_colunas] == AGUA){
-				
+				text_color(1);
 				printf("%c%c",32,32);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == HORIZONTAL){
-				
+				text_color(15);
 				printf("%c%c",205,205);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == VERTICAL){
-				
+				text_color(15);
 				printf("%c%c",186,186);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == CANTINFESQ){
-				
+				text_color(15);
 				printf("%c%c",200,200);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == CANTINFDIR){
-				
+				text_color(15);
 				printf("%c%c",188,188);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == CANTSUPESQ){
-				
+				text_color(15);
 				printf("%c%c",201,201);	
 									
 			}else if(mapa[cont_linhas][cont_colunas] == CANTSUPDIR){
-				
+				text_color(15);
 				printf("%c%c",187,187);
 										
 			}else if(mapa[cont_linhas][cont_colunas] == CAMINHOHOR){
-				
+				text_color(15);
 				printf("%c%c",196,196);	
 									
 			}else if(mapa[cont_linhas][cont_colunas] == CAMINHOVER){
-				
+				text_color(15);
 				printf("%c%c",124,124);	
 									
 			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
 						
-						
+				text_color(2);		
 				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	
-				//quando o valor 0 Ã© encontrado na matriz, printa a identificaÃ§Ã£o de cada paÃ­s seguido da quantidade de tropas
+				//quando o valor 0 ÃƒÂ© encontrado na matriz, printa a identificaÃƒÂ§ÃƒÂ£o de cada paÃƒÂ­s seguido da quantidade de tropas
 				cont_pais++;
 				
 				cont_tropas++;
@@ -131,7 +131,7 @@ bool teste_dono_pais(char letra){
 	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ 
 	//percorre os 20 paises da matriz pais[21][4]
 		if(pais[cont_matriz_pais][1] == letra){ 
-		//caso encontre a letra digitada, prosseguira a anÃƒÂ¡lise
+		//caso encontre a letra digitada, prosseguira a anÃƒÆ’Ã‚Â¡lise
 			if(strcmp(player[vez], player1) == 0){ 
 			//a analise continua se a vez da rodada for do jogador 1
 				if(pais[cont_matriz_pais][0] == '1'){ 
@@ -443,7 +443,7 @@ bool teste_vizinhanca_pais(char pais_origem, char pais_destino){
 			
 		}
 		
-	}
+	} return true_false;
 
 }
 
@@ -526,5 +526,4 @@ bool bonus_tropas_pais(){
 	} return true_false;
 	
 }
-
 
