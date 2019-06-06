@@ -34,7 +34,10 @@ int main(){
 		
 	}
 	
-	ataque_defesa(); //funcao bugada para sair do while
+	for(vez = 0; vez <= 1; vez++){
+			
+		ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
+	}
 	
 	} 
 	
