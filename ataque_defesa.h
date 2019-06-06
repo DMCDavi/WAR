@@ -22,13 +22,13 @@ void ataque_defesa (){
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
 				
 		printf("%s, Digite a letra do pais com o qual deseja atacar:", player[vez]);
-		scanf("%s", &pais_desejado_atacante); //variavel que recebe o pais de ataque 
-		fflush(stdin);		
+		scanf(" %c", &pais_desejado_atacante); //variavel que recebe o pais de ataque 
+		
 		
 		if(pais_desejado_atacante != '0'){
 		
 		
-		//verificacao se o paÃ­s existe ou n
+		//verificacao se o paÃƒÂ­s existe ou n
 		//parte de verificacao de pertencimento do pais ao jogador :
 		if(teste_dono_pais(pais_desejado_atacante)){ //caso o pais pertenca ao player q ataca...
 									
@@ -50,9 +50,8 @@ void ataque_defesa (){
 								
 				//selecionando quem vai ser atacado
 				printf("%s, digite a letra do pais adversario que voce deseja atacar:\n", player[vez]);
-				scanf("%s", &pais_desejado_atacado);
-				fflush(stdin);
-				
+				scanf(" %c", &pais_desejado_atacado);
+								
 				// verificando pertencimento de do pais a ser atacado (inimigo)
 				if (!teste_dono_pais(pais_desejado_atacado) && teste_vizinhanca_pais(pais_desejado_atacante, pais_desejado_atacado)) { //se pertencer ao inimigo e for vizinho
 					//caso o pais atacado pertenca ao player q defende...
@@ -106,7 +105,7 @@ void ataque_defesa (){
 					//colocando em ORDEM CRESCENTE os numeros sorteados pelos dados de ataque
 					if (qtd_dados_ataque == 3){ //para 3 dados de ataque
 						if (dado_ataque[0] < dado_ataque[1]) { //a<b 0<1
-							if(dado_ataque[1] > dado_ataque[2]){ //a<b e c<b 0<1 e 2<1
+							if(dado_ataque[1] > dado_ataque[2]){ //c<b a<b 0<1 e 2<1
 								if (dado_ataque[0] > dado_ataque[2]){ //c<a<b 2<0<1
 									maior_ataque[0] = dado_ataque[2];
 									maior_ataque[1] = dado_ataque[0];			 
@@ -114,9 +113,18 @@ void ataque_defesa (){
 								if(dado_ataque[0] < dado_ataque[2]){ //a<c<b 0<2<1
 									maior_ataque[0] = dado_ataque[0];
 									maior_ataque[1] = dado_ataque[2];
+								}								
+								else{ //a=c
+									maior_ataque[1] = dado_ataque[2];
 								}
 								maior_ataque[2] = dado_ataque[1];
 							}
+							else if(dado_ataque[1] <= dado_ataque[2]){ //b<c a<b<c ou a<b=c 0<1=2
+								maior_ataque[0] = dado_ataque[0];
+								maior_ataque[1] = dado_ataque[1];
+								maior_ataque[2] = dado_ataque[2];
+							}
+						
 						}
 						else if(dado_ataque[1] < dado_ataque[0]){ //b<a 1<0
 							if(dado_ataque[1] < dado_ataque[2] ) {//b<c 1<2
@@ -124,37 +132,60 @@ void ataque_defesa (){
 									maior_ataque[1] = dado_ataque[2];
 									maior_ataque[2] = dado_ataque[0];
 								}
-								else if (dado_ataque[2] > dado_ataque[0]){ //b<a<c 1<0<2
+								else if (dado_ataque[2] >= dado_ataque[0]){ //b<a<c 1<0<2 ou b<a=c
 									maior_ataque[1] = dado_ataque[0];
 									maior_ataque[2] = dado_ataque[2];
-								}
+								}								
 								maior_ataque[0] = dado_ataque[1];
+								
 							}
 							
-							else if(dado_ataque[1] > dado_ataque[2]){ // c<b 2<1 ---> c<b<a 2<1<0
+							else if(dado_ataque[1] >= dado_ataque[2]){ // c<b 2<1 ---> c<b<a 2<1<0
 								maior_ataque[0] = dado_ataque[2];
 								maior_ataque[1] = dado_ataque[1];
 								maior_ataque[2] = dado_ataque[0];
+							}							
+							
+						}
+						
+						else if(dado_ataque[0] == dado_ataque[1]){ //a=b
+							if(dado_ataque[0]<dado_ataque[2]){ //a<c
+								maior_ataque[2] = dado_ataque[2];
+								maior_ataque[0] = dado_ataque[0];
 							}
+							else if(dado_ataque[1] > dado_ataque[2]){ //a>c
+								maior_ataque[2] = dado_ataque[0];
+								maior_ataque[0] = dado_ataque[2];
+							}
+							else{ //a=b=c
+								maior_ataque[2] = dado_ataque[2];
+								maior_ataque[0] = dado_ataque[0];
+							}
+							maior_ataque[1] = dado_ataque[1];
 						}
 						
 						else{ //a<b<c 0<1<2
 							maior_ataque[0] = dado_ataque[0];
 							maior_ataque[1] = dado_ataque[1];
 							maior_ataque[2] = dado_ataque[2];
-						}					
+						}
+											
 					}
 					
 					
-						if (qtd_dados_ataque == 2){ //para 2 dados de ataque
+						else if (qtd_dados_ataque == 2){ //para 2 dados de ataque
 							if(dado_ataque[0] > dado_ataque[1]){ // b<a 1<0
 								maior_ataque[1] = dado_ataque[1];
 								maior_ataque[2] = dado_ataque[0];
 							}
-							else{ // a<b 0<1
+							else if(dado_ataque[0] <dado_ataque[1]){ // a<b 0<1
 								maior_ataque[1] = dado_ataque[0];
 								maior_ataque[2] = dado_ataque[1];
 							}		
+							else{ //a=b
+								maior_ataque[0] = dado_ataque[0];
+								maior_ataque[1] = dado_ataque[1];
+							}
 						}
 						
 						if(qtd_dados_ataque == 1){ //para apenas 1 dado de ataque
@@ -178,10 +209,11 @@ void ataque_defesa (){
 										maior_defesa[0] = dado_defesa[2];
 										maior_defesa[1] = dado_defesa[0];			 
 									}
-									else if(dado_defesa[0] < dado_defesa[2]){ //a<c<b 0<2<1
+									else if(dado_defesa[0] <= dado_defesa[2]){ //a<c<b 0<2<1 ou a=c<b
 										maior_defesa[0] = dado_defesa[0];
 										maior_defesa[1] = dado_defesa[2];
 									}
+									
 									maior_defesa[2] = dado_defesa[1];
 								}								
 							}
@@ -191,9 +223,12 @@ void ataque_defesa (){
 										maior_defesa[1] = dado_defesa[2];
 										maior_defesa[2] = dado_defesa[0];
 									}
-									else if (dado_defesa[2] > dado_defesa[0]){ //b<a<c 1<0<2
+									else if (dado_defesa[2] > dado_defesa[0]){ //b<a<c 1<0<2 
 									maior_defesa[1] = dado_defesa[0];
 									maior_defesa[2] = dado_defesa[2];
+									}
+									else{ //a=c
+									maior_defesa[1] = dado_defesa[2];
 									}
 									maior_defesa[0] = dado_defesa[1];
 								}
@@ -202,9 +237,14 @@ void ataque_defesa (){
 									maior_defesa[1] = dado_defesa[1];
 									maior_defesa[2] = dado_defesa[0];
 								}
+								else{ //c=b ----> b=c<a
+								maior_defesa[0] = dado_defesa[1];
+								maior_defesa[1] = dado_defesa[2];
+								maior_defesa[2] = dado_defesa[0];
+								}
 							}
 						
-							else{ //a<b<c 0<1<2 já está em ordem crescente
+							else{ //a<b<c 0<1<2 jÃ¡ estÃ¡ em ordem crescente
 								maior_defesa[0] = dado_defesa[0];
 								maior_defesa[1] = dado_defesa[1];
 								maior_defesa[2] = dado_defesa[2];
@@ -217,10 +257,14 @@ void ataque_defesa (){
 									maior_defesa[1] = dado_defesa[1];
 									maior_defesa[2] = dado_defesa[0];
 								}
-								else{ // a<b 0<1
+								else if(dado_defesa[0] <dado_defesa[1]){ // a<b 0<1
 									maior_defesa[1] = dado_defesa[0];
 									maior_defesa[2] = dado_defesa[1];
-								}						
+								}		
+								else{ //a=b
+									maior_defesa[0] = dado_defesa[0];
+									maior_defesa[1] = dado_defesa[1];
+								}					
 							}
 						
 							if(qtd_dados_defesa == 1){ //para apenas 1 dado de defesa
@@ -245,7 +289,7 @@ void ataque_defesa (){
 					for(cont_sorteio_dados=2; cont_sorteio_dados > qtd_comparacao; cont_sorteio_dados--){
 						printf("\t%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
 						if(maior_ataque[cont_sorteio_dados] <= maior_defesa[cont_sorteio_dados]){ //ganho defesa
-							tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] -1;
+							tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
 						}
 						else{ //ganho ataque
 							tropas_pais[posicao_pais_encontrado_defesa] = tropas_pais[posicao_pais_encontrado_defesa] - 1;
@@ -291,7 +335,7 @@ void ataque_defesa (){
 		
 		} //FIM IF PERTENCIMENTO  DO PAIS ATACANTE
 		
-		else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã‚Â± pertenÃƒÆ’Ã‚Â§a ao jogador q estÃƒÆ’Ã‚Â¡ jogando
+		else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ jogando
 		{	printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
 		}	
 				
@@ -301,6 +345,5 @@ void ataque_defesa (){
 		scanf("%s", resposta_ataque);
 						
 	} //fim do while do ataque
-	//chamar funcao de remanejamento de tropas
-	
+		
 }//fim da funcao (void)	
