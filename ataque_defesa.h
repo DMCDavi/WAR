@@ -1,6 +1,8 @@
 //dados de ataque e defesa (apos ter add as tropas aos seus devidos territorios)
 
-//[ERROS]: aparentemente nao ha mais algum pelo oq eu vi/testei
+//[ERROS]: as tropas nao estao sendo descontadas!!!
+//TESTE DE VIZINHANCA NAO FUNCIONA
+
 
 void ataque_defesa (){
 	
@@ -14,7 +16,6 @@ void ataque_defesa (){
 	//variaveis que receberao os nomes dos paises de ataque e defesa selecionados pelo player
 	char resposta_ataque[4] = "SIM"; 
 	//resposta do novo ataque
-	
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n", player[vez]);
 	
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
@@ -107,6 +108,7 @@ void ataque_defesa (){
 									srand(time(NULL));
 									dado_ataque[cont_sorteio_dados] = (rand() % 5) + 1;
 									printf("%d\n", dado_ataque[cont_sorteio_dados]);
+									//quando resolver o printf dos valores em ordem crescente pode tirar esse?
 								}
 				
 								//colocando em ORDEM CRESCENTE os numeros sorteados pelos dados de ataque
@@ -211,7 +213,8 @@ void ataque_defesa (){
 								for (cont_sorteio_dados = 0; cont_sorteio_dados < qtd_dados_defesa; cont_sorteio_dados++){
 									srand(time(NULL));
 									dado_defesa[cont_sorteio_dados] = (rand() % 5) + 1;
-									printf("%d\n", dado_defesa[cont_sorteio_dados]);
+									printf("%d\n", dado_defesa[cont_sorteio_dados]); 
+									//quando resolver o printf dos valores em ordem crescente pode tirar esse?
 								}
 					
 								//colocando em ordem crescente os numeros sorteados pelos dados de defesa
@@ -304,13 +307,15 @@ void ataque_defesa (){
 									qtd_comparacao = 2;
 								}
 								for(cont_sorteio_dados=2; cont_sorteio_dados >= qtd_comparacao; cont_sorteio_dados--){
-									if(strcmp(player[vez], player1) == 0){ //imprimindo nome dos jogadores com os numeros sorteados
+									//imprimindo nome dos jogadores com os numeros sorteados em ordem crescente
+									if(strcmp(player[vez], player1) == 0){
 										printf("\n\n\t%s\tx\t%s\n", player1, player2);
 									}
 									else if(strcmp(player[vez], player2) == 0){
 										printf("\n\n\t%s\tx\t%s\n", player2, player1);
 									}
 									printf("\t%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
+									
 									//verificando quem ganhou
 									if(maior_ataque[cont_sorteio_dados] <= maior_defesa[cont_sorteio_dados]){ //ganho defesa
 										tropas_pais[posicao_pais_encontrado_ataque] = tropas_pais[posicao_pais_encontrado_ataque] - 1;
@@ -325,21 +330,13 @@ void ataque_defesa (){
 												pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
 											}								
 										}
-									}
-									
+									}									
 									system("pause");
 									//atualizando o mapa...
 									system("cls"); //limpando a tela
 									print_mapa(); //reimprime o mapa						
 								}										
 							
-								/*if(cont_vitoria_ataque <= cont_vitoria_defesa){
-									printf("%s, vc nao obteve sucesso nesse ataque!\n", player[vez]);	
-								}
-								else{
-									printf("%s, vc obteve sucesso nesse ataque!\n", player[vez]);	
-								}*/						
-									
 							}//FIM IF PERTENCIMENTO AO INIMIGO
 							
 							else{ //caso o pais nao pertenca ao inimigo
@@ -364,7 +361,9 @@ void ataque_defesa (){
 				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
 				{	printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
 				}	
-			}//FIM IF EXISTENCIA PAIS ATACANTE	
+				
+			}//FIM IF EXISTENCIA PAIS ATACANTE
+				
 			else{ //se o pais atacante nao existir	
 			printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor tente outro!\n");
 			}
