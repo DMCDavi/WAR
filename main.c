@@ -15,29 +15,31 @@ int main(){
 	}	
 	
 	if(Menu_inicial != 0){
-	
-	cadastro_players();
-	
-	aleat_players();
-	
-	cria_paises(pais);
-	
-	print_mapa();
-	
-	printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\n", player1, player2);
-	
-	system("pause");
-	
-	for(vez = 0; vez <= 1; vez++){ //laÃƒÂ§o de repetiÃƒÂ§ÃƒÂ£o que faz cada jogador adicionar suas tropas no inicio do jogo
-		
-		add_tropas();
-		
-	}
-	
-	for(vez = 0; vez <= 1; vez++){
-			
-		ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
-	}
+	//jogo acontecendo
+	//colocar laco para o jogo so parar quando um dos jogadores conquistar o mundo
+		cadastro_players();
+
+		aleat_players();
+
+		cria_paises(pais);
+
+		print_mapa();
+
+		printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\n", player1, player2);
+
+		system("pause");
+
+		for(vez = 0; vez <= 1; vez++){ //laÃƒÂ§o de repetiÃƒÂ§ÃƒÂ£o que faz cada jogador adicionar suas tropas no inicio do jogo
+
+			add_tropas();
+
+		}
+
+		//colocar apos a segunda rodada de tropas adicionadas
+		for(vez = 0; vez <= 1; vez++){
+
+			ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
+		}
 	
 	} 
 	
