@@ -1,8 +1,5 @@
 //dados de ataque e defesa (apos ter add as tropas aos seus devidos territorios)
 
-//[ERROS]: as tropas nao estao sendo descontadas!!!
-//TESTE DE VIZINHANCA NAO FUNCIONA
-
 
 void ataque_defesa (){
 	
