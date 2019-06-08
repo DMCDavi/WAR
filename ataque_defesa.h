@@ -111,139 +111,45 @@ void ataque_defesa (){
 								}
 				
 				
-				
-								if(dado_ataque[0] >= dado_ataque[1] && dado_ataque[0] >= dado_ataque[2]){
+								//colocando em ORDEM CRESCENTE os numeros sorteados pelos dados de ataque
+								if(dado_ataque[0] >= dado_ataque[1] && dado_ataque[0] >= dado_ataque[2] && maior_ataque[2] == 0){
 									
 									maior_ataque[2] = dado_ataque[0];
 									
-								}else if(dado_ataque[0] <= dado_ataque[1] && dado_ataque[0] <= dado_ataque[2]){
+								}else if(dado_ataque[0] <= dado_ataque[1] && dado_ataque[0] <= dado_ataque[2] && maior_ataque[0] == 0){
 									
 									maior_ataque[0] = dado_ataque[0];
 									
-								}else if((dado_ataque[0] >= dado_ataque[1] && dado_ataque[0] <= dado_ataque[2]) || (dado_ataque[0] >= dado_ataque[2] && dado_ataque[0] <= dado_ataque[1])){
+								}else if((dado_ataque[0] >= dado_ataque[1] && dado_ataque[0] <= dado_ataque[2] && maior_ataque[1] == 0) || (dado_ataque[0] >= dado_ataque[2] && dado_ataque[0] <= dado_ataque[1] && maior_ataque[1] == 0)){
 									
 									maior_ataque[1] = dado_ataque[0];
 									
-								} if(dado_ataque[1] >= dado_ataque[0] && dado_ataque[1] >= dado_ataque[2]){
+								} if(dado_ataque[1] >= dado_ataque[0] && dado_ataque[1] >= dado_ataque[2] && maior_ataque[2] == 0){
 									
 									maior_ataque[2] = dado_ataque[1];
 									
-								}else if(dado_ataque[1] <= dado_ataque[0] && dado_ataque[1] <= dado_ataque[2]){
+								}else if(dado_ataque[1] <= dado_ataque[0] && dado_ataque[1] <= dado_ataque[2] && maior_ataque[0] == 0){
 									
 									maior_ataque[0] = dado_ataque[1];
 									
-								}else if((dado_ataque[1] >= dado_ataque[0] && dado_ataque[1] <= dado_ataque[2]) || (dado_ataque[1] >= dado_ataque[2] && dado_ataque[1] <= dado_ataque[0])){
+								}else if((dado_ataque[1] >= dado_ataque[0] && dado_ataque[1] <= dado_ataque[2] && maior_ataque[1] == 0) || (dado_ataque[1] >= dado_ataque[2] && dado_ataque[1] <= dado_ataque[0] && maior_ataque[1] == 0)){
 									
 									maior_ataque[1] = dado_ataque[1];
 									
-								} if(dado_ataque[2] >= dado_ataque[1] && dado_ataque[2] >= dado_ataque[0]){
+								} if(dado_ataque[2] >= dado_ataque[1] && dado_ataque[2] >= dado_ataque[0] && maior_ataque[2] == 0){
 									
 									maior_ataque[2] = dado_ataque[2];
 									
-								}else if(dado_ataque[2] <= dado_ataque[1] && dado_ataque[2] <= dado_ataque[0]){
+								}else if(dado_ataque[2] <= dado_ataque[1] && dado_ataque[2] <= dado_ataque[0] && maior_ataque[0] == 0){
 									
 									maior_ataque[0] = dado_ataque[2];
 									
-								}else if((dado_ataque[2] >= dado_ataque[1] && dado_ataque[2] <= dado_ataque[0]) || (dado_ataque[2] >= dado_ataque[0] && dado_ataque[2] <= dado_ataque[1])){
+								}else if((dado_ataque[2] >= dado_ataque[1] && dado_ataque[2] <= dado_ataque[0] && maior_ataque[1] == 0) || (dado_ataque[2] >= dado_ataque[0] && dado_ataque[2] <= dado_ataque[1] && maior_ataque[1] == 0)){
 									
 									maior_ataque[1] = dado_ataque[2];
 									
 								}
-								
-								
-								
-								//colocando em ORDEM CRESCENTE os numeros sorteados pelos dados de ataque
-//								if (qtd_dados_ataque == 3){ //para 3 dados de ataque
-//									if (dado_ataque[0] < dado_ataque[1]) { //a<b 0<1
-//										if(dado_ataque[1] > dado_ataque[2]){ //c<b a<b 0<1 e 2<1
-//											if (dado_ataque[0] > dado_ataque[2]){ //c<a<b 2<0<1
-//												maior_ataque[0] = dado_ataque[2];
-//												maior_ataque[1] = dado_ataque[0];			 
-//											}
-//											if(dado_ataque[0] < dado_ataque[2]){ //a<c<b 0<2<1
-//												maior_ataque[0] = dado_ataque[0];
-//												maior_ataque[1] = dado_ataque[2];
-//											}								
-//											else{ //a=c
-//												maior_ataque[1] = dado_ataque[2];
-//											}
-//											maior_ataque[2] = dado_ataque[1];
-//										}
-//										else if(dado_ataque[1] <= dado_ataque[2]){ //b<c a<b<c ou a<b=c 0<1=2
-//											maior_ataque[0] = dado_ataque[0];
-//											maior_ataque[1] = dado_ataque[1];
-//											maior_ataque[2] = dado_ataque[2];
-//										}
-//									
-//									}
-//									else if(dado_ataque[1] < dado_ataque[0]){ //b<a 1<0
-//										if(dado_ataque[1] < dado_ataque[2] ) {//b<c 1<2
-//											if (dado_ataque[2] < dado_ataque[0]){ //b<c<a 1<2<0
-//												maior_ataque[1] = dado_ataque[2];
-//												maior_ataque[2] = dado_ataque[0];
-//											}
-//											else if (dado_ataque[2] >= dado_ataque[0]){ //b<a<c 1<0<2 ou b<a=c
-//												maior_ataque[1] = dado_ataque[0];
-//												maior_ataque[2] = dado_ataque[2];
-//											}								
-//											maior_ataque[0] = dado_ataque[1];
-//											
-//										}
-//										
-//										else if(dado_ataque[1] >= dado_ataque[2]){ // c<b 2<1 ---> c<b<a 2<1<0
-//											maior_ataque[0] = dado_ataque[2];
-//											maior_ataque[1] = dado_ataque[1];
-//											maior_ataque[2] = dado_ataque[0];
-//										}							
-//										
-//									}
-//									
-//									else if(dado_ataque[0] == dado_ataque[1]){ //a=b
-//										if(dado_ataque[0]<dado_ataque[2]){ //a<c
-//											maior_ataque[2] = dado_ataque[2];
-//											maior_ataque[0] = dado_ataque[0];
-//										}
-//										else if(dado_ataque[1] > dado_ataque[2]){ //a>c
-//											maior_ataque[2] = dado_ataque[0];
-//											maior_ataque[0] = dado_ataque[2];
-//										}
-//										else{ //a=b=c
-//											maior_ataque[2] = dado_ataque[2];
-//											maior_ataque[0] = dado_ataque[0];
-//										}
-//										maior_ataque[1] = dado_ataque[1];
-//									}
-//									
-//									else{ //a<b<c 0<1<2
-//										maior_ataque[0] = dado_ataque[0];
-//										maior_ataque[1] = dado_ataque[1];
-//										maior_ataque[2] = dado_ataque[2];
-//									}
-//														
-//								}
-//								
-//								
-//									else if (qtd_dados_ataque == 2){ //para 2 dados de ataque
-//										if(dado_ataque[0] > dado_ataque[1]){ // b<a 1<0
-//											maior_ataque[1] = dado_ataque[1];
-//											maior_ataque[2] = dado_ataque[0];
-//										}
-//										else if(dado_ataque[0] <dado_ataque[1]){ // a<b 0<1
-//											maior_ataque[1] = dado_ataque[0];
-//											maior_ataque[2] = dado_ataque[1];
-//										}		
-//										else{ //a=b
-//											maior_ataque[0] = dado_ataque[0];
-//											maior_ataque[1] = dado_ataque[1];
-//										}
-//									}
-//									
-//									else if(qtd_dados_ataque == 1){ //para apenas 1 dado de ataque
-//										maior_ataque[2]= dado_ataque[0];
-//									}
-											
-						
-						
+										
 								//sorteando dados da DEFESA
 								if(strcmp(player[vez], player1) == 0){
 									printf("%s\n", player2);
@@ -258,114 +164,44 @@ void ataque_defesa (){
 									//quando resolver o printf dos valores em ordem crescente pode tirar esse?
 								}
 								
-								if(dado_defesa[0] >= dado_defesa[1] && dado_defesa[0] >= dado_defesa[2]){
+								//colocando em ordem crescente os numeros sorteados pelos dados de defesa
+								if(dado_defesa[0] >= dado_defesa[1] && dado_defesa[0] >= dado_defesa[2] && maior_defesa[2] == 0){
 									
 									maior_defesa[2] = dado_defesa[0];
 									
-								}else if(dado_defesa[0] <= dado_defesa[1] && dado_defesa[0] <= dado_defesa[2]){
+								}else if(dado_defesa[0] <= dado_defesa[1] && dado_defesa[0] <= dado_defesa[2] && maior_defesa[0] == 0){
 									
 									maior_defesa[0] = dado_defesa[0];
 									
-								}else if((dado_defesa[0] >= dado_defesa[1] && dado_defesa[0] <= dado_defesa[2]) || (dado_defesa[0] >= dado_defesa[2] && dado_defesa[0] <= dado_defesa[1])){
+								}else if((dado_defesa[0] >= dado_defesa[1] && dado_defesa[0] <= dado_defesa[2] && maior_defesa[1] == 0) || (dado_defesa[0] >= dado_defesa[2] && dado_defesa[0] <= dado_defesa[1] && maior_defesa[1] == 0)){
 									
 									maior_defesa[1] = dado_defesa[0];
 									
-								} if(dado_defesa[1] >= dado_defesa[0] && dado_defesa[1] >= dado_defesa[2]){
+								} if(dado_defesa[1] >= dado_defesa[0] && dado_defesa[1] >= dado_defesa[2] && maior_defesa[2] == 0){
 									
 									maior_defesa[2] = dado_defesa[1];
 									
-								}else if(dado_defesa[1] <= dado_defesa[0] && dado_defesa[1] <= dado_defesa[2]){
+								}else if(dado_defesa[1] <= dado_defesa[0] && dado_defesa[1] <= dado_defesa[2] && maior_defesa[0] == 0){
 									
 									maior_defesa[0] = dado_defesa[1];
 									
-								}else if((dado_defesa[1] >= dado_defesa[0] && dado_defesa[1] <= dado_defesa[2]) || (dado_defesa[1] >= dado_defesa[2] && dado_defesa[1] <= dado_defesa[0])){
+								}else if((dado_defesa[1] >= dado_defesa[0] && dado_defesa[1] <= dado_defesa[2] && maior_defesa[1] == 0) || (dado_defesa[1] >= dado_defesa[2] && dado_defesa[1] <= dado_defesa[0] && maior_defesa[1] == 0)){
 									
 									maior_defesa[1] = dado_defesa[1];
 									
-								} if(dado_defesa[2] >= dado_defesa[1] && dado_defesa[2] >= dado_defesa[0]){
+								} if(dado_defesa[2] >= dado_defesa[1] && dado_defesa[2] >= dado_defesa[0] && maior_defesa[2] == 0){
 									
 									maior_defesa[2] = dado_defesa[2];
 									
-								}else if(dado_defesa[2] <= dado_defesa[1] && dado_defesa[2] <= dado_defesa[0]){
+								}else if(dado_defesa[2] <= dado_defesa[1] && dado_defesa[2] <= dado_defesa[0] && maior_defesa[0] == 0){
 									
 									maior_defesa[0] = dado_defesa[2];
 									
-								}else if((dado_defesa[2] >= dado_defesa[1] && dado_defesa[2] <= dado_defesa[0]) || (dado_defesa[2] >= dado_defesa[0] && dado_defesa[2] <= dado_defesa[1])){
+								}else if((dado_defesa[2] >= dado_defesa[1] && dado_defesa[2] <= dado_defesa[0] && maior_defesa[1] == 0) || (dado_defesa[2] >= dado_defesa[0] && dado_defesa[2] <= dado_defesa[1] && maior_defesa[1] == 0)){
 									
 									maior_defesa[1] = dado_defesa[2];
 									
-								}
-								
-//								//colocando em ordem crescente os numeros sorteados pelos dados de defesa
-//									if (qtd_dados_defesa == 3){ //para 3 dados de defesa
-//										if (dado_defesa[0] < dado_defesa[1]) { //a<b 0<1
-//											if(dado_defesa[1] > dado_defesa[2]){ //a<b e c<b 0<1 e 2<1
-//												if (dado_defesa[0] > dado_defesa[2]){ //c<a<b 2<0<1
-//													maior_defesa[0] = dado_defesa[2];
-//													maior_defesa[1] = dado_defesa[0];			 
-//												}
-//												else if(dado_defesa[0] <= dado_defesa[2]){ //a<c<b 0<2<1 ou a=c<b
-//													maior_defesa[0] = dado_defesa[0];
-//													maior_defesa[1] = dado_defesa[2];
-//												}
-//												
-//												maior_defesa[2] = dado_defesa[1];
-//											}								
-//										}
-//										else if(dado_defesa[1] < dado_defesa[0]){ //b<a 1<0
-//											if(dado_defesa[1] < dado_defesa[2] ) {//b<c 1<2
-//												if (dado_defesa[2] < dado_defesa[0]){ //b<c<a 1<2<0
-//													maior_defesa[1] = dado_defesa[2];
-//													maior_defesa[2] = dado_defesa[0];
-//												}
-//												else if (dado_defesa[2] > dado_defesa[0]){ //b<a<c 1<0<2 
-//												maior_defesa[1] = dado_defesa[0];
-//												maior_defesa[2] = dado_defesa[2];
-//												}
-//												else{ //a=c
-//												maior_defesa[1] = dado_defesa[2];
-//												}
-//												maior_defesa[0] = dado_defesa[1];
-//											}
-//											else if(dado_defesa[1] > dado_defesa[2]){ // c<b 2<1 ---> c<b<a 2<1<0
-//												maior_defesa[0] = dado_defesa[2];
-//												maior_defesa[1] = dado_defesa[1];
-//												maior_defesa[2] = dado_defesa[0];
-//											}
-//											else{ //c=b ----> b=c<a
-//											maior_defesa[0] = dado_defesa[1];
-//											maior_defesa[1] = dado_defesa[2];
-//											maior_defesa[2] = dado_defesa[0];
-//											}
-//										}
-//									
-//										else{ //a<b<c 0<1<2 jÃƒÂ¡ estÃƒÂ¡ em ordem crescente
-//											maior_defesa[0] = dado_defesa[0];
-//											maior_defesa[1] = dado_defesa[1];
-//											maior_defesa[2] = dado_defesa[2];
-//										}
-//									}
-//				
-//				
-//										else if (qtd_dados_defesa == 2){ //para 2 dados de defesa
-//											if(dado_defesa[0] > dado_defesa[1]){ // b<a 1<0
-//												maior_defesa[1] = dado_defesa[1];
-//												maior_defesa[2] = dado_defesa[0];
-//											}
-//											else if(dado_defesa[0] <dado_defesa[1]){ // a<b 0<1
-//												maior_defesa[1] = dado_defesa[0];
-//												maior_defesa[2] = dado_defesa[1];
-//											}		
-//											else{ //a=b
-//												maior_defesa[0] = dado_defesa[0];
-//												maior_defesa[1] = dado_defesa[1];
-//											}					
-//										}
-//									
-//										else if(qtd_dados_defesa == 1){ //para apenas 1 dado de defesa
-//											maior_defesa[2]= dado_defesa[0];
-//										}
-											
+								}						
 				
 								//comparando e imprimindo valores de ataque e defesa (quem ganha/perde territorio)
 							
