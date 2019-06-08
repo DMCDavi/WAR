@@ -5,9 +5,8 @@ void ataque_defesa (){
 	
 	int qtd_comparacao, qtd_dados_ataque, qtd_dados_defesa; 
 	//variaveis q calculam a qtd de dados de ataque X defesa e dps comparam
-	int cont_sorteio_dados, posicao_pais_encontrado_ataque, posicao_pais_encontrado_defesa;
+	int cont_sorteio_dados, posicao_pais_encontrado_ataque, posicao_pais_encontrado_defesa, tropas_realocar;
 	//contadores para o for 
-
 	char pais_desejado_atacante, pais_desejado_atacado;  
 	//variaveis que receberao os nomes dos paises de ataque e defesa selecionados pelo player
 	char resposta_ataque[4] = "SIM"; 
@@ -249,7 +248,31 @@ void ataque_defesa (){
 									system("pause");
 									//atualizando o mapa...
 									system("cls"); //limpando a tela
-									print_mapa(); //reimprime o mapa						
+									print_mapa(); //reimprime o mapa
+									
+									while(tropas_pais[posicao_pais_encontrado_defesa] == 0){
+										
+										if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
+										
+											printf("%s, quantas tropas voce deseja colocar no territorio conquistado?\n", player[vez]);
+											scanf("%d", &tropas_realocar);
+											
+											if(tropas_realocar < tropas_pais[posicao_pais_encontrado_ataque]){
+												
+												tropas_pais[posicao_pais_encontrado_defesa] += tropas_realocar;
+												tropas_pais[posicao_pais_encontrado_ataque] -= tropas_realocar;
+												system("cls"); //limpando a tela
+												print_mapa(); //reimprime o mapa
+												
+											}else{
+												
+												printf("[ERRO] O NUMERO DE TROPAS EXCEDE A QUANTIDADE DE TROPAS DE SEU PAIS. Digite novamente\n");
+												
+											}
+																
+										}
+									}
+															
 								}										
 							
 							}//FIM IF PERTENCIMENTO AO INIMIGO
