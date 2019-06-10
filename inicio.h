@@ -14,14 +14,20 @@ int Menu_inicial(){
 	printf("\t\t\t\t\t\t\t\t\t  Escolha a opcao \n\n");
 	printf("\t\t\t\t\t\t\t\t\t   (0) - Regras \n");
 	printf("\t\t\t\t\t\t\t\t\t   (1) - jogar \n");
+	printf("\t\t\t\t\t\t\t\t\t    :");
 	scanf("%d",&menu);
-	
+/*	if(menu != int){
+		printf("");
+		Menu_inicial();
+	}*/
 	return menu;
 }
-void cadastro_players(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que irÃƒÆ’Ã‚Â¡ cadastrar os players em nomes de usuario
+
+void cadastro_players(){ //funÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que irÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡ cadastrar os players em nomes de usuario
 	system("cls");
 	printf("\t\t\t\t\t\t\t\t Bem-vindo ao MINI WAR! \\o/ \\o/ \\o/   \n\n");
 	Menu_inicial();
+	printf("\t\t\t\t\t\t\t     ");
 	system("pause");
 	system("cls");		
 	//int k = 9;
@@ -29,38 +35,42 @@ void cadastro_players(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que irÃƒÆ
 	//EsperarTempo(k);
 	
 	text_color(10);	
-	printf("Player 1, digite seu username: ");
+	fflush(stdin);
+	printf("\t\t\t\t\t\t\t\t Player 1, digite seu username: ");
+	
 	scanf(" %[^\n]s", &player1);
 	system("cls");	
 	
 	text_color(1);
-	printf("Player 2, digite seu username: ");
+	printf("\t\t\t\t\t\t\t\t Player 2, digite seu username: ");
+	
 	scanf(" %[^\n]s", &player2);
 	system("cls");
 	
 	if(strcasecmp(player1,player2) == 0){
 		text_color(4);
-		printf("[ERRO] OS DOIS NOMES SAO IGUAIS. POR FAVOR DIGITE NOVAMENTE\n");
+		printf("\t\t\t\t\t\t\t\t [ERRO] OS DOIS NOMES SAO IGUAIS. POR FAVOR DIGITE NOVAMENTE\n");
 		text_color(15);
+		printf("\t\t\t\t\t\t\t     ");
 		system("pause");
 		system("cls");
 		
 		printf("\t\t\t\t\t Bem-vindo ao MINI WAR. \\o/ \\o/ \\o/ \n\n");
 		
 		text_color(10);
-		printf("Player 1, digite seu username: ");
+		printf("\t\t\t\t\t\t\t\t Player 1, digite seu username: ");
 		scanf(" %[^\n]s", &player1);
 	
 		text_color(1);
-		printf("Player 2, digite seu username: ");
+		printf("\t\t\t\t\t\t\t\t Player 2, digite seu username: ");
 		scanf(" %[^\n]s", &player2);
 	text_color(15);
+	printf("\t\t\t\t\t\t\t     ");
 	system("pause");
 	system("cls");
 	}
 	
 }
-
 void aleat_players(){ //funÃ§Ã£o que define de forma aleatoria quem vai iniciar o jogo
 	
 	int num_aleatorio;
