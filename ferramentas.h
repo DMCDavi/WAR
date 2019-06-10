@@ -1,4 +1,6 @@
-//Essa biblioteca contÃƒÂ©m as funÃƒÂ§ÃƒÂµes que serÃƒÂ£o usadas como ferramentas ÃƒÂºteis ÃƒÂ s outras
+//Essa biblioteca contÃƒÆ’Ã‚Â©m as funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes que serÃƒÆ’Ã‚Â£o usadas como ferramentas ÃƒÆ’Ã‚Âºteis ÃƒÆ’Ã‚Â s outras
+
+
 void text_color(int color){
 	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
@@ -6,7 +8,7 @@ void text_color(int color){
 }
 
 void print_mapa(){ 
-	//funÃƒÂ§ÃƒÂ£o que printa na tela o mapa
+	//funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que printa na tela o mapa
 	//system("color 1F"); 
 	//define as cores do mapa
 	text_color(15);
@@ -103,7 +105,7 @@ void print_mapa(){
 						
 				text_color(2);		
 				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	
-				//quando o valor 0 ÃƒÂ© encontrado na matriz, printa a identificaÃƒÂ§ÃƒÂ£o de cada paÃƒÂ­s seguido da quantidade de tropas
+				//quando o valor 0 ÃƒÆ’Ã‚Â© encontrado na matriz, printa a identificaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de cada paÃƒÆ’Ã‚Â­s seguido da quantidade de tropas
 				cont_pais++;
 				
 				cont_tropas++;
@@ -131,7 +133,7 @@ bool teste_dono_pais(char letra){
 	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ 
 	//percorre os 20 paises da matriz pais[21][4]
 		if(pais[cont_matriz_pais][1] == letra){ 
-		//caso encontre a letra digitada, prosseguira a anÃƒÆ’Ã‚Â¡lise
+		//caso encontre a letra digitada, prosseguira a anÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡lise
 			if(strcmp(player[vez], player1) == 0){ 
 			//a analise continua se a vez da rodada for do jogador 1
 				if(pais[cont_matriz_pais][0] == '1'){ 
@@ -527,3 +529,26 @@ bool bonus_tropas_pais(){
 	
 }
 
+void contar_paises(){
+		
+	qntd_paises_player1 = 0;
+	
+	qntd_paises_player2 = 0	;
+		
+	int cont_num_pais;
+	
+	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o a que player cada pais pertence
+		
+		if(pais[cont_num_pais][0] == '1'){ //se o pais tiver o numero 1, a variavel qntd_paises_player1 vai aumentar em 1
+			
+			qntd_paises_player1++;
+			
+		} else if(pais[cont_num_pais][0] == '2'){ //se o pais tiver o numero 2, a variavel qntd_paises_player2 vai aumentar em 1
+			
+			qntd_paises_player2++;
+			
+		}
+	
+	}
+	
+}
