@@ -24,26 +24,28 @@ int main(){
 		cria_paises(pais);
 
 		print_mapa();
-
-		printf("Cada pais possui uma numeracao seguido de uma letra.\nOs paises de numero 1 pertencem a %s.\nEnquanto os paises de numero 2 pertencem a %s.\n", player1, player2);
-
+		
+		printf("\t\t\t\t\t\t\tCada pais possui uma numeracao seguido de uma letra.");
+		text_color(10);
+		printf("\n\t\t\t\t\t\t\t   Os paises de numero 1 pertencem a %s.",player1);
+		text_color(1);
+		printf("\n\t\t\t\t\t\t\t   Os paises de numero 2 pertencem a %s.\n",player2);
+		printf("\t\t\t\t\t\t\t");
+		text_color(15);
 		system("pause");
+		
+		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+        text_color(10);
+        printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+        
+			add_tropas();
 
-		//comeca o jogo 
-		while(qntd_paises_player1 <20 || qntd_paises_player2 < 20){ //jogo rodando
-
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
-	        
-	       		 	printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
-	        
-				add_tropas();
-	
-			}
-			
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
-			
-				printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
-				
+		}
+		
+		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+		text_color(1);
+		printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+		
 				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
 				
 				remanejar_tropas(); // remaneja as tropas ao fim do turno 
