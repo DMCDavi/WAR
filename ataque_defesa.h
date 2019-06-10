@@ -13,7 +13,7 @@ void ataque_defesa (){
 	//resposta do novo ataque
 	srand(time(NULL));
 	
-	printf("\n\t\t\t\t\t\t\t\t\t");
+	printf("\n\t\t\t\t\t\t\t");
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n", player[vez]);
 	
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
@@ -269,7 +269,7 @@ void ataque_defesa (){
 												print_mapa(); //reimprime o mapa
 												
 											}else{
-												
+												text_color(4);
 												printf("[ERRO] O NUMERO DE TROPAS EXCEDE A QUANTIDADE DE TROPAS DE SEU PAIS. Digite novamente\n");
 												
 											}
@@ -282,18 +282,21 @@ void ataque_defesa (){
 							}//FIM IF PERTENCIMENTO AO INIMIGO
 							
 							else{ //caso o pais nao pertenca ao inimigo
+								text_color(4);
 								printf("[ERRO] NAO EH POSSIVEL SELECIONAR ESSE PAIS! Por favor, tente outro.\n");
 							}
 							
 						}//FIM IF EXISTENCIA PAIS ATACADO 
 						
 						else{//se o pais atacado nao existir
+							text_color(4);
 							printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor, tente outro!\n");
 						}
 						
 					} //FIM IF QTD DE TROPAS > 1
 				
 					else if(tropas_pais[posicao_pais_encontrado_ataque] == 1){//caso a quantidade de tropas seja insuficiente
+						text_color(4);
 						printf("[ERRO] NUMERO DE TROPAS INSUFICIENTE PARA ATAQUE! Por favor, tente outro.\n");
 					}
 				
@@ -301,18 +304,22 @@ void ataque_defesa (){
 				
 				
 				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
-				{	printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
+				{	
+					text_color(4);
+					printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
 				}	
 				
 			}//FIM IF EXISTENCIA PAIS ATACANTE
 				
 			else{ //se o pais atacante nao existir	
-			printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor tente outro!\n");
+				text_color(4);
+				printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor tente outro!\n");
 			}
 
 		}//fim resposta != de 0
 		
 		//perguntando se deseja novo ataque
+		text_color(15);
 		printf("\nDeseja atacar novamente? [SIM][NAO]\n");
 		scanf("%s", resposta_ataque);
 				
