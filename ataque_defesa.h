@@ -13,6 +13,7 @@ void ataque_defesa (){
 	//resposta do novo ataque
 	srand(time(NULL));
 	
+	printf("\n\t\t\t\t\t\t\t\t\t");
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n", player[vez]);
 	
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
@@ -223,12 +224,15 @@ void ataque_defesa (){
 								for(cont_sorteio_dados=2; cont_sorteio_dados >= qtd_comparacao; cont_sorteio_dados--){
 									//imprimindo nome dos jogadores com os numeros sorteados em ordem crescente
 									if(strcmp(player[vez], player1) == 0){
-										printf("\n\n\t%s\tx\t%s\n", player1, player2);
+										printf("\n\n\t\t\t\t\t\t\t\t\t");
+										printf("%s\tx\t%s\n", player1, player2);
 									}
 									else if(strcmp(player[vez], player2) == 0){
-										printf("\n\n\t%s\tx\t%s\n", player2, player1);
+										printf("\n\n\t\t\t\t\t\t\t\t\t");
+										printf("%s\tx\t%s\n", player2, player1);
 									}
-									printf("\t%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
+									printf("\n\n\t\t\t\t\t\t\t\t\t");
+									printf("%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
 									
 									//verificando quem ganhou
 									if(maior_ataque[cont_sorteio_dados] <= maior_defesa[cont_sorteio_dados]){ //ganho defesa
@@ -243,7 +247,7 @@ void ataque_defesa (){
 											else if(strcmp(player[vez], player2) == 0){ //se for player 2 
 												pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
 											}								
-										}
+										} contar_paises();
 									}									
 									system("pause");
 									//atualizando o mapa...
@@ -257,7 +261,7 @@ void ataque_defesa (){
 											printf("%s, quantas tropas voce deseja colocar no territorio conquistado?\n", player[vez]);
 											scanf("%d", &tropas_realocar);
 											
-											if(tropas_realocar < tropas_pais[posicao_pais_encontrado_ataque]){
+											if(tropas_realocar < tropas_pais[posicao_pais_encontrado_ataque] && tropas_realocar <= qtd_dados_ataque){
 												
 												tropas_pais[posicao_pais_encontrado_defesa] += tropas_realocar;
 												tropas_pais[posicao_pais_encontrado_ataque] -= tropas_realocar;
@@ -273,7 +277,7 @@ void ataque_defesa (){
 										}
 									}
 															
-								}										
+								} //fim for print dos dados em ordem crescente								
 							
 							}//FIM IF PERTENCIMENTO AO INIMIGO
 							
@@ -296,7 +300,7 @@ void ataque_defesa (){
 				} //FIM IF PERTENCIMENTO  DO PAIS ATACANTE
 				
 				
-				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
+				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
 				{	printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
 				}	
 				
