@@ -28,7 +28,7 @@ void add_tropas(){ //funÃƒÂ§ÃƒÂ£o para adicionar as tropas no inicio de 
 	
 	while(tropas_player[vez] != 0){ //vai repetir o processo de adicionar as tropas atÃƒÂ© a quantidade de tropas disponiveis do player acabar
 	
-		printf("%s, voce possui %d tropas adicionais.\nDigite a letra do pais que deseja adicionar suas tropas:\n", player[vez], tropas_player[vez]); //diz a quantidade e quem vai comeÃƒÂ§ar a adicionar as tropas
+		printf("\n%s, voce possui %d tropas adicionais.\n\t\t\t\t\t\t\tDigite a letra do pais que deseja adicionar suas tropas:\n", player[vez], tropas_player[vez]); //diz a quantidade e quem vai comeÃƒÂ§ar a adicionar as tropas
 		
 		scanf("%s", &posicao_pais); //lÃƒÂª a letra do pais que o usuario quer adicionar as tropas
 		
@@ -48,7 +48,7 @@ void add_tropas(){ //funÃƒÂ§ÃƒÂ£o para adicionar as tropas no inicio de 
 			
 			if(teste_existencia_pais(posicao_pais)){ //se a letra digitada estiver entre A e T maiusculo ou minusculo, o processo continua, senÃƒÂ£o pede pra digitar novamente
 		
-				printf("%s, voce possui %d tropas adicionais.\nDigite o numero de tropas que voce deseja adicionar nesse pais:\n", player[vez], tropas_player[vez]);
+					printf("\n%s, voce possui %d tropas adicionais.\nDigite o numero de tropas que voce deseja adicionar nesse pais:\n", player[vez], tropas_player[vez]);
 			
 				scanf("%d", &num_tropas_add); // LÃƒÂª o nÃƒÂºmero de tropas que o player quer adicionar no pais
 				
