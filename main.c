@@ -29,17 +29,25 @@ int main(){
 
 		system("pause");
 
-		for(vez = 0; vez <= 1; vez++){ //laÃƒÂ§o de repetiÃƒÂ§ÃƒÂ£o que faz cada jogador adicionar suas tropas no inicio do jogo
-
+		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã‚Â§o de repetiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+        
+        printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+        
 			add_tropas();
 
 		}
-
-		//colocar apos a segunda rodada de tropas adicionadas
-		for(vez = 0; vez <= 1; vez++){
-
+		
+		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã‚Â§o de repetiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+		
+		printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+		
 			ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
+			
+			remanejar_tropas(); // remaneja as tropas ao fim do turno 
+
 		}
+	
+		//colocar apos a segunda rodada de tropas adicionadas
 	
 	} 
 	
