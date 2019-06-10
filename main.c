@@ -43,15 +43,18 @@ int main(){
 			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
 			
 				printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
-			
+				
 				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
 				
-				//remanejar_tropas(); // remaneja as tropas ao fim do turno 
+				remanejar_tropas(); // remaneja as tropas ao fim do turno 
 	
+				add_tropas();
+				
 			}
 		
 			//colocar apos a segunda rodada de tropas adicionadas
-		}
+		
+		} //fim do jogo
 		
 		//fim do jogo
 		if(qntd_paises_player1 == 20){ //se o player1 ganhar
