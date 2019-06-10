@@ -29,27 +29,40 @@ int main(){
 
 		system("pause");
 
-		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã‚Â§o de repetiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
-        
-        printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
-        
-			add_tropas();
+		//comeca o jogo 
+		while(qntd_paises_player1 <20 || qntd_paises_player2 < 20){ //jogo rodando
 
-		}
-		
-		for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã‚Â§o de repetiÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
-		
-		printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
-		
-			ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
+			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+	        
+	       		 	printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+	        
+				add_tropas();
+	
+			}
 			
-			remanejar_tropas(); // remaneja as tropas ao fim do turno 
-
+			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+			
+				printf("\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+			
+				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
+				
+				//remanejar_tropas(); // remaneja as tropas ao fim do turno 
+	
+			}
+		
+			//colocar apos a segunda rodada de tropas adicionadas
 		}
-	
-		//colocar apos a segunda rodada de tropas adicionadas
-	
-	} 
+		
+		//fim do jogo
+		if(qntd_paises_player1 == 20){ //se o player1 ganhar
+			printf("\n\n\t\t\t\t\t\t\t\t\t");
+			printf("%s, voce dominou o mundo!!!\n", player1);
+		}
+		else if(qntd_paises_player2 == 20){ //se o player2 ganhar
+			printf("\n\n\t\t\t\t\t\t\t\t\t");
+			printf("%s, voce dominou o mundo!!!\n", player2);
+		}
+		 
 	
 	return 0;
 	
