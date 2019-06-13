@@ -36,23 +36,23 @@ int main(){
 		
 		//comeca o jogo
 		while(qntd_paises_player1 <20 || qntd_paises_player2 < 20){
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
-      				text_color(10);
-  				printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+      			text_color(10);
+  				printf("\t\t\t\t\t\tTurno de %s! ", player[vez]);
    				add_tropas();
 	
 			}
 		
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
 				text_color(1);
 			
-				printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+				printf("\t\t\t\t\t\tTurno de %s! ", player[vez]);
 				
 				add_tropas();
 		
 				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
 				
-				remanejar_tropas(); // remaneja as tropas ao fim do turno	
+				//remanejar_tropas(); // remaneja as tropas ao fim do turno	
 				
 			}
 		
@@ -70,6 +70,7 @@ int main(){
 			printf("%s, voce dominou o mundo!!!\n", player2);
 		}		 
 	
+	}
 	return 0;
 	
 }
