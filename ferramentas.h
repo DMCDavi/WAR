@@ -102,13 +102,17 @@ void print_mapa(){
 				printf("%c%c",124,124);	
 									
 			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
-						
-				text_color(2);		
-				printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);	
-				//quando o valor 0 ÃƒÆ’Ã‚Â© encontrado na matriz, printa a identificaÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o de cada paÃƒÆ’Ã‚Â­s seguido da quantidade de tropas
-				cont_pais++;
-				
-				cont_tropas++;
+				if(pais[cont_pais][0] == '1'){
+					text_color(2);
+					printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);
+					cont_pais++;
+					cont_tropas++;
+				}else if(pais[cont_pais][0] == '2'){
+					text_color(1);	
+					printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);
+					cont_pais++;
+					cont_tropas++;
+				}
 			}
 				
 		}printf("\n");
