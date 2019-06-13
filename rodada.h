@@ -1,5 +1,3 @@
-//Essa biblioteca contÃƒÂ©m as funÃƒÂ§ÃƒÂµes principais de cada rodada do jogo
-	
 void add_tropas(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para adicionar as tropas no inicio de cada rodada
 	
 	char posicao_pais; //vai receber a letra do pais 
@@ -28,7 +26,9 @@ void add_tropas(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para adicionar as 
 	
 	while(tropas_player[vez] != 0){ //vai repetir o processo de adicionar as tropas atÃƒÆ’Ã‚Â© a quantidade de tropas disponiveis do player acabar
 	
-		printf("%s, voce possui %d tropas adicionais.\n\t\t\t\t\t\t   Digite a letra do pais que deseja adicionar suas tropas:\n\t\t\t\t\t\t\t\t\t\t", player[vez], tropas_player[vez]); //diz a quantidade e quem vai comeÃƒÆ’Ã‚Â§ar a adicionar as tropas
+		printf("\n%s, voce possui %d tropas adicionais.\n", player[vez], tropas_player[vez]); //diz a quantidade e quem vai comeÃƒÆ’Ã‚Â§ar a adicionar as tropas
+		
+		printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja adicionar suas tropas:\n");
 		
 		scanf("%s", &posicao_pais); //lÃƒÆ’Ã‚Âª a letra do pais que o usuario quer adicionar as tropas
 		
@@ -47,14 +47,32 @@ void add_tropas(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para adicionar as 
 			}
 			
 			if(teste_existencia_pais(posicao_pais)){ //se a letra digitada estiver entre A e T maiusculo ou minusculo, o processo continua, senÃƒÆ’Ã‚Â£o pede pra digitar novamente
-		
-				printf("%s, voce possui %d tropas adicionais.\n\t\t\t\t\t\t   Digite o numero de tropas que voce deseja adicionar nesse pais:\n\t\t\t\t\t\t\t\t\t\t", player[vez], tropas_player[vez]);
+				if(bonus_tropas_pais()){
+					if(player[vez] == player1){ //se for a vez do player1
+						tropas_player[vez] += qntd_tropas_bonus_player1; 
+					}
+					else{
+						tropas_player[vez] += qntd_tropas_bonus_player2;
+					}
+				}
+					
+				printf("\n%s, voce possui %d tropas adicionais.\nDigite o numero de tropas que voce deseja adicionar nesse pais:\n", player[vez], tropas_player[vez]);
 			
 				scanf("%d", &num_tropas_add); // LÃƒÆ’Ã‚Âª o nÃƒÆ’Ã‚Âºmero de tropas que o player quer adicionar no pais
 				
 				if(num_tropas_add <= tropas_player[vez]){ //sÃƒÆ’Ã‚Â³ prossegue com o cÃƒÆ’Ã‚Â³digo se o nÃƒÆ’Ã‚Âºmero de tropas que o player quer adicinonar for menor ou igual que o nÃƒÆ’Ã‚Âºmero de tropas disponÃƒÆ’Ã‚Â­veis que ele possui, senÃƒÆ’Ã‚Â£o pede pra digitar novamente
+								
+					if(player[vez] == player1){ //se for a vez do player1
 					
-					tropas_pais[num_pais] = tropas_pais[num_pais] + num_tropas_add; //adiciona a quantidade desejada de tropas no pais de interesse
+						tropas_pais[num_pais] = tropas_pais[num_pais] + num_tropas_add; //adiciona a quantidade desejada de tropas no pais de interesse		
+				
+					}
+					else{ //vez do player2
+					
+						tropas_pais[num_pais] = tropas_pais[num_pais] + num_tropas_add;
+				
+					}
+				
 					
 					tropas_player[vez] = tropas_player[vez] - num_tropas_add; //diminui a quantidade de tropas disponiveis
 					
@@ -63,20 +81,20 @@ void add_tropas(){ //funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o para adicionar as 
 					print_mapa(); //imprime o mapa com as novas tropas
 					
 				} else{
-					text_color(4);
-					printf("\t\t\t\t\t\t\t\t[ERRO] Voce apenas possui %d tropas. Digite novamente.\n", tropas_player[vez]);
+					
+					printf("Voce apenas possui %d tropas. Digite novamente.\n", tropas_player[vez]);
 					
 				}
 			
 		} else{
-				text_color(4);
-				printf("\t\t\t\t\t\t\t\t[ERRO] Pais nao registrado. Digite novamente.\n"); //printa na tela essa mensagem caso a letra digitada nÃƒÆ’Ã‚Â£o seja referente a nenhum paÃƒÆ’Ã‚Â­s
+				
+				printf("Pais nao registrado. Digite novamente.\n"); //printa na tela essa mensagem caso a letra digitada nÃƒÆ’Ã‚Â£o seja referente a nenhum paÃƒÆ’Ã‚Â­s
 				
 			}
 			
 		} else{
-			text_color(2);
-			printf("\t\t\t\t\t\t\t\t[ERRO] O pais digitado nao te pertence. Digite novamente.\n"); //printa na tela essa mensagem caso o paÃƒÆ’Ã‚Â­s nÃƒÆ’Ã‚Â£o pertenÃƒÆ’Ã‚Â§a ao player da vez
+			
+			printf("O pais digitado nao te pertence. Digite novamente.\n"); //printa na tela essa mensagem caso o paÃƒÆ’Ã‚Â­s nÃƒÆ’Ã‚Â£o pertenÃƒÆ’Ã‚Â§a ao player da vez
 		
 		} 
 		
