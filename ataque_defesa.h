@@ -13,13 +13,14 @@ void ataque_defesa (){
 	//resposta do novo ataque
 	srand(time(NULL));
 	
-	printf("\n\t\t\t\t\t\t\t");
+	printf("\n\t\t\t\t");
 	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n", player[vez]);
 	
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
 		int maior_ataque[3] = {0, 0, 0}, maior_defesa[3] = {0, 0, 0}, dado_ataque[3] = {0, 0, 0}, dado_defesa[3] = {0, 0, 0}; 
 		//vetores que armazenarao valores sorteados em ordem crescente		
-		printf("%s, Digite a letra do pais com o qual deseja atacar:", player[vez]);
+		printf("\t\t\t\t\t\t\t    %s, Digite a letra do pais com o qual deseja atacar", player[vez]);
+		printf("\n\t\t\t\t\t\t\t\t\t   :");
 		scanf(" %c", &pais_desejado_atacante); //variavel que recebe o pais de ataque 
 		
 		
@@ -47,7 +48,8 @@ void ataque_defesa (){
 					if(tropas_pais[posicao_pais_encontrado_ataque] > 1) { //caso a qtd de tropas seja suficiente...					
 										
 						//selecionando quem vai ser atacado
-						printf("%s, digite a letra do pais adversario que voce deseja atacar:\n", player[vez]);
+						printf("\t\t\t\t\t\t\t  %s, digite a letra do pais adversario que voce deseja atacar\n", player[vez]);
+						printf("\t\t\t\t\t\t\t\t\t   :");
 						scanf(" %c", &pais_desejado_atacado);
 						
 						//verificando existencia do pais atacado
@@ -98,14 +100,17 @@ void ataque_defesa (){
 							
 								//sorteando dados do ATAQUE
 								if(strcmp(player[vez], player1) == 0){
+									text_color(10);
 									printf("%s\n", player1);
 								}
 								else if(strcmp(player[vez], player2) == 0){
+									text_color(1);
 									printf("%s\n", player2);
 								}
 								for (cont_sorteio_dados=0; cont_sorteio_dados<qtd_dados_ataque; cont_sorteio_dados++){
 									
 									dado_ataque[cont_sorteio_dados] = (rand() % 6) + 1;
+									text_color(15);
 									printf("Dado de ataque %d: %d\n", cont_sorteio_dados+1, dado_ataque[cont_sorteio_dados]);
 									//quando resolver o printf dos valores em ordem crescente pode tirar esse?
 								}
@@ -152,14 +157,17 @@ void ataque_defesa (){
 										
 								//sorteando dados da DEFESA
 								if(strcmp(player[vez], player1) == 0){
+									text_color(1);
 									printf("%s\n", player2);
 								}
 								else if(strcmp(player[vez], player2) == 0){
+									text_color(10);
 									printf("%s\n", player1);
 								}
 								for (cont_sorteio_dados = 0; cont_sorteio_dados < qtd_dados_defesa; cont_sorteio_dados++){
 									
 									dado_defesa[cont_sorteio_dados] = (rand() % 6) + 1;
+									text_color(15);
 									printf("Dado de defesa %d: %d\n", cont_sorteio_dados+1, dado_defesa[cont_sorteio_dados]); 
 									//quando resolver o printf dos valores em ordem crescente pode tirar esse?
 								}
@@ -225,14 +233,29 @@ void ataque_defesa (){
 									//imprimindo nome dos jogadores com os numeros sorteados em ordem crescente
 									if(strcmp(player[vez], player1) == 0){
 										printf("\n\n\t\t\t\t\t\t\t\t\t");
-										printf("%s\tx\t%s\n", player1, player2);
+										text_color(10);
+										printf("%s\t", player1);
+										text_color(15);
+										printf("x");
+										text_color(1);
+										printf("\t%s\n", player2);
 									}
 									else if(strcmp(player[vez], player2) == 0){
 										printf("\n\n\t\t\t\t\t\t\t\t\t");
-										printf("%s\tx\t%s\n", player2, player1);
+										text_color(10);
+										printf("%s\t", player2);
+										text_color(15);
+										printf("x");
+										text_color(1);
+										printf("\t%s\n", player1);
 									}
 									printf("\n\n\t\t\t\t\t\t\t\t\t");
-									printf("%d\tx\t%d\n", maior_ataque[cont_sorteio_dados], maior_defesa[cont_sorteio_dados]);
+									text_color(15);
+									printf("%d\t",maior_ataque[cont_sorteio_dados]);
+									text_color(15);
+									printf("x");
+									text_color(15);
+									printf("\t%d\n" , maior_defesa[cont_sorteio_dados]);
 									
 									//verificando quem ganhou
 									if(maior_ataque[cont_sorteio_dados] <= maior_defesa[cont_sorteio_dados]){ //ganho defesa
@@ -248,7 +271,8 @@ void ataque_defesa (){
 												pais[posicao_pais_encontrado_defesa][0] = '2'; //player2 conquista o territorio do player1
 											}								
 										} contar_paises();
-									}									
+									}		
+									text_color(15);							
 									system("pause");
 									//atualizando o mapa...
 									system("cls"); //limpando a tela
@@ -258,7 +282,8 @@ void ataque_defesa (){
 										
 										if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
 										
-											printf("%s, quantas tropas voce deseja colocar no territorio conquistado?\n", player[vez]);
+											printf("\t\t\t\t\t\t%s, quantas tropas voce deseja colocar no territorio conquistado?\n", player[vez]);
+											printf("\t\t\t\t\t\t\t\t\t   :");
 											scanf("%d", &tropas_realocar);
 											
 											if(tropas_realocar < tropas_pais[posicao_pais_encontrado_ataque] && tropas_realocar <= qtd_dados_ataque){
@@ -270,7 +295,7 @@ void ataque_defesa (){
 												
 											}else{
 												text_color(4);
-												printf("[ERRO] O NUMERO DE TROPAS EXCEDE A QUANTIDADE DE TROPAS DE SEU PAIS. Digite novamente\n");
+												printf("\t\t\t\t\t\t [ERRO] O NUMERO DE TROPAS EXCEDE A QUANTIDADE DE TROPAS DE SEU PAIS. Digite novamente\n");
 												
 											}
 																
@@ -283,44 +308,44 @@ void ataque_defesa (){
 							
 							else{ //caso o pais nao pertenca ao inimigo
 								text_color(4);
-								printf("[ERRO] NAO EH POSSIVEL SELECIONAR ESSE PAIS! Por favor, tente outro.\n");
+								printf("\t\t\t\t\t\t [ERRO] NAO EH POSSIVEL SELECIONAR ESSE PAIS! Por favor, tente outro.\n");
 							}
 							
 						}//FIM IF EXISTENCIA PAIS ATACADO 
 						
 						else{//se o pais atacado nao existir
 							text_color(4);
-							printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor, tente outro!\n");
+							printf("\t\t\t\t\t\t [ERRO] ESSE PAIS NAO EXISTE! Por favor, tente outro!\n");
 						}
 						
 					} //FIM IF QTD DE TROPAS > 1
 				
 					else if(tropas_pais[posicao_pais_encontrado_ataque] == 1){//caso a quantidade de tropas seja insuficiente
 						text_color(4);
-						printf("[ERRO] NUMERO DE TROPAS INSUFICIENTE PARA ATAQUE! Por favor, tente outro.\n");
+						printf("\n\t\t\t\t\t\t[ERRO] NUMERO DE TROPAS INSUFICIENTE PARA ATAQUE! Por favor, tente outro.\n");
 					}
 				
 				} //FIM IF PERTENCIMENTO  DO PAIS ATACANTE
 				
 				
-				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
+				else //if(teste_dono_pais(pais_desejado_atacante) || teste_existencia_pais(pais_desejado_atacante)){ //caso o pais ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â± pertenÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§a ao jogador q estÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡ jogando
 				{	
 					text_color(4);
-					printf("[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
+					printf("\n\t\t\t\t\t\t[ERRO] ESSE PAIS NAO TE PERTENCE! Por favor, tente outro.\n");
 				}	
 				
 			}//FIM IF EXISTENCIA PAIS ATACANTE
 				
 			else{ //se o pais atacante nao existir	
 				text_color(4);
-				printf("[ERRO] ESSE PAIS NAO EXISTE! Por favor tente outro!\n");
+				printf("\n\t\t\t\t\t\t [ERRO] ESSE PAIS NAO EXISTE! Por favor tente outro!\n");
 			}
 
 		}//fim resposta != de 0
 		
 		//perguntando se deseja novo ataque
 		text_color(15);
-		printf("\nDeseja atacar novamente? [SIM][NAO]\n");
+		printf("\n\t\t\t\t\t\t\t\t Deseja atacar novamente? [SIM][NAO]\n");
 		scanf("%s", resposta_ataque);
 				
 	} //fim do while do ataque
