@@ -1,4 +1,4 @@
-//Essa biblioteca contÃƒÆ’Ã‚Â©m as funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Âµes que serÃƒÆ’Ã‚Â£o usadas como ferramentas ÃƒÆ’Ã‚Âºteis ÃƒÆ’Ã‚Â s outras
+//Essa biblioteca contÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©m as funÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âµes que serÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o usadas como ferramentas ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Âºteis ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â s outras
 
 
 void text_color(int color){
@@ -8,7 +8,7 @@ void text_color(int color){
 }
 
 void print_mapa(){ 
-	//funÃƒÆ’Ã‚Â§ÃƒÆ’Ã‚Â£o que printa na tela o mapa
+	//funÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o que printa na tela o mapa
 	//system("color 1F"); 
 	//define as cores do mapa
 	text_color(15);
@@ -102,6 +102,7 @@ void print_mapa(){
 				printf("%c%c",124,124);	
 									
 			}else if(mapa[cont_linhas][cont_colunas] == PAIS){
+				//condicionais que permitem printar a cor respectiva do player
 				if(pais[cont_pais][0] == '1'){
 					text_color(2);
 					printf("%s%.3d", pais[cont_pais], tropas_pais[cont_tropas]);
@@ -137,7 +138,7 @@ bool teste_dono_pais(char letra){
 	for(cont_matriz_pais = 0; cont_matriz_pais < 21; cont_matriz_pais++){ 
 	//percorre os 20 paises da matriz pais[21][4]
 		if(pais[cont_matriz_pais][1] == letra){ 
-		//caso encontre a letra digitada, prosseguira a anÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¡lise
+		//caso encontre a letra digitada, prosseguira a anÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¡lise
 			if(strcmp(player[vez], player1) == 0){ 
 			//a analise continua se a vez da rodada for do jogador 1
 				if(pais[cont_matriz_pais][0] == '1'){ 
@@ -462,9 +463,9 @@ bool bonus_tropas_pais(){
 	//caso os paises 'A', 'B', 'C' e 'I' estejam sob controle do player 1, este recebera 5 tropas de bonus por dominar a America do Norte
 		qntd_tropas_bonus_player1 += 5;
 		
-		continente = "America do Norte";
+		//continente = "America do Norte";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 
 		true_false = true;
 		
@@ -474,9 +475,9 @@ bool bonus_tropas_pais(){
 		//a mesma verificacao ocorre para o player 2
 		qntd_tropas_bonus_player2 += 5;
 		
-		continente = "America do Norte";
+		//continente = "America do Norte";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 
 		true_false = true;
 		
@@ -484,9 +485,9 @@ bool bonus_tropas_pais(){
 		//a mesma verificacao ocorre para todos os outros continentes. Essa eh a Europa
 		qntd_tropas_bonus_player1 += 5;
 		
-		continente = "Europa";
+		//continente = "Europa";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 
 		
 		true_false = true;
@@ -495,9 +496,9 @@ bool bonus_tropas_pais(){
 		
 		qntd_tropas_bonus_player2 += 5;
 		
-		continente = "Europa";
+		//continente = "Europa";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 		
 		true_false = true;
 		
@@ -505,9 +506,9 @@ bool bonus_tropas_pais(){
 		//essa eh a Asia
 		qntd_tropas_bonus_player1 = 7;
 		
-		continente = "Asia";
+		//continente = "Asia";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 
 		
 		true_false = true;
@@ -516,9 +517,9 @@ bool bonus_tropas_pais(){
 		
 		qntd_tropas_bonus_player2 = 7;
 		
-		continente = "Asia";
+		//continente = "Asia";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 		
 		true_false = true;
 		
@@ -526,9 +527,9 @@ bool bonus_tropas_pais(){
 		//Essa eh a America do Sul
 		qntd_tropas_bonus_player1 = 2;
 		
-		continente = "America do Sul";
+		//continente = "America do Sul";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 		
 		true_false = true;
 	
@@ -536,9 +537,9 @@ bool bonus_tropas_pais(){
 		
 		qntd_tropas_bonus_player2 = 2;
 		
-		continente = "America do Sul";
+		//continente = "America do Sul";
 		
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 		
 		true_false = true;
 		
@@ -546,9 +547,9 @@ bool bonus_tropas_pais(){
 		//Essa eh a Africa
 		qntd_tropas_bonus_player1 = 3;
 		
-		continente = "Africa";
+		//continente = "Africa";
 	
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 
 		true_false = true;
 	
@@ -556,9 +557,9 @@ bool bonus_tropas_pais(){
 		
 		qntd_tropas_bonus_player2 = 3;
 		
-		continente = "Africa";
+		//continente = "Africa";
 
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 
 		true_false = true;
 		
@@ -566,9 +567,9 @@ bool bonus_tropas_pais(){
 		//Essa eh a Oceania
 		qntd_tropas_bonus_player1 = 2;
 		
-		continente = "Oceania";
+		//continente = "Oceania";
 
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player1, continente);
 
 		true_false = true;
 	
@@ -576,9 +577,9 @@ bool bonus_tropas_pais(){
 		
 		qntd_tropas_bonus_player2 = 2;
 		
-		continente = "Oceania";
+		//continente = "Oceania";
 
-		printf("%s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
+		printf("\t\t\t\t\t %s, voce ainda possui %d tropas adicionais por conquistar %s! Mas so pode adiciona-las nesse continente! \n ", player[vez], qntd_tropas_bonus_player2, continente);
 
 		true_false = true;
 		
@@ -593,7 +594,7 @@ void contar_paises(){
 		
 	int cont_num_pais;
 	
-	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o a que player cada pais pertence
+	for(cont_num_pais = 0; cont_num_pais < 21; cont_num_pais++){ //percorre a matriz pais[21][4] em busca dos numeros 1 e 2 que definirÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£o a que player cada pais pertence
 		
 		if(pais[cont_num_pais][0] == '1'){ //se o pais tiver o numero 1, a variavel qntd_paises_player1 vai aumentar em 1
 			
