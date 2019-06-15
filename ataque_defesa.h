@@ -14,12 +14,32 @@ void ataque_defesa (){
 	srand(time(NULL));
 	
 	printf("\n\t\t\t\t");
-	printf("%s, chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n", player[vez]);
+	if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+		
+		text_color(10); 
+	}
+	else if(strcmp(player[vez],player2) == 0){
+				
+		text_color(1);
+	}
+	printf("%s, ", player[vez]);
+	text_color(15);
+	printf("chegou a sua vez de atacar! Para pular essa parte digite 0! Senao, prossiga normalmente o jogo!\n\n");
 	
 	while (strcmp(resposta_ataque, "sim") == 0 || strcmp(resposta_ataque, "SIM") == 0){ // LOOPING DO ATAQUE
 		int maior_ataque[3] = {0, 0, 0}, maior_defesa[3] = {0, 0, 0}, dado_ataque[3] = {0, 0, 0}, dado_defesa[3] = {0, 0, 0}; 
-		//vetores que armazenarao valores sorteados em ordem crescente		
-		printf("\t\t\t\t\t\t\t    %s, Digite a letra do pais com o qual deseja atacar", player[vez]);
+		//vetores que armazenarao valores sorteados em ordem crescente
+	if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+		
+		text_color(10); 
+	}
+	else if(strcmp(player[vez],player2) == 0){
+				
+		text_color(1);
+	}		
+		printf("\t\t\t\t\t\t\t    %s, ",player[vez]);
+		text_color(15); 
+		printf("Digite a letra do pais com o qual deseja atacar");
 		printf("\n\t\t\t\t\t\t\t\t\t   :");
 		scanf(" %c", &pais_desejado_atacante); //variavel que recebe o pais de ataque 
 		
@@ -48,7 +68,17 @@ void ataque_defesa (){
 					if(tropas_pais[posicao_pais_encontrado_ataque] > 1) { //caso a qtd de tropas seja suficiente...					
 										
 						//selecionando quem vai ser atacado
-						printf("\t\t\t\t\t\t\t  %s, digite a letra do pais adversario que voce deseja atacar\n", player[vez]);
+						if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+		
+							text_color(10); 
+						}
+						else if(strcmp(player[vez],player2) == 0){
+				
+							text_color(1);
+						}
+						printf("\t\t\t\t\t\t\t    %s, ", player[vez]);
+						text_color(15);
+						printf("digite a letra do pais adversario que voce deseja atacar\n");
 						printf("\t\t\t\t\t\t\t\t\t   :");
 						scanf(" %c", &pais_desejado_atacado);
 						
@@ -156,11 +186,11 @@ void ataque_defesa (){
 								}
 										
 								//sorteando dados da DEFESA
-								if(strcmp(player[vez], player1) == 0){
+								if(strcmp(player[vez], player2) == 0){
 									text_color(1);
 									printf("%s\n", player2);
 								}
-								else if(strcmp(player[vez], player2) == 0){
+								else if(strcmp(player[vez], player1) == 0){
 									text_color(10);
 									printf("%s\n", player1);
 								}
@@ -281,8 +311,17 @@ void ataque_defesa (){
 									while(tropas_pais[posicao_pais_encontrado_defesa] == 0){
 										
 										if(tropas_pais[posicao_pais_encontrado_defesa] == 0){ //se o a defesa nao tiver mais tropas...
-										
-											printf("\t\t\t\t\t\t%s, quantas tropas voce deseja colocar no territorio conquistado?\n", player[vez]);
+											if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+		
+												text_color(10); 
+											}
+											else if(strcmp(player[vez],player2) == 0){
+				
+												text_color(1);
+											}
+											printf("\t\t\t\t\t\t%s, ", player[vez]);
+											text_color(15);
+											printf("quantas tropas voce deseja colocar no territorio conquistado?\n");
 											printf("\t\t\t\t\t\t\t\t\t   :");
 											scanf("%d", &tropas_realocar);
 											
@@ -346,6 +385,7 @@ void ataque_defesa (){
 		//perguntando se deseja novo ataque
 		text_color(15);
 		printf("\n\t\t\t\t\t\t\t\t Deseja atacar novamente? [SIM][NAO]\n");
+		printf("\t\t\t\t\t\t\t\t\t     :");
 		scanf("%s", resposta_ataque);
 				
 	} //fim do while do ataque

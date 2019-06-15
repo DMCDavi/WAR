@@ -26,14 +26,14 @@ void add_tropas(){ //funÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†
 	
 	while(tropas_player[vez] != 0){ //vai repetir o processo de adicionar as tropas atÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â© a quantidade de tropas disponiveis do player acabar
 		
-		if(player[vez] == player1){ //se for a vez do player1
+		if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
 						
-						text_color(10); 
-					}
-					else{
+			text_color(10); 
+		}
+		else if(strcmp(player[vez],player2) == 0){
 						
-						text_color(1);
-					}
+			text_color(1);
+		}
 		printf("\n\t\t\t\t\t\t\t     %s, voce possui %d tropas adicionais.\n", player[vez], tropas_player[vez]); //diz a quantidade e quem vai comeÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ar a adicionar as tropas
 		
 		printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja adicionar suas tropas\n");
@@ -56,11 +56,11 @@ void add_tropas(){ //funÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†
 			
 			if(teste_existencia_pais(posicao_pais)){ //se a letra digitada estiver entre A e T maiusculo ou minusculo, o processo continua, senÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â£o pede pra digitar novamente
 				if(bonus_tropas_pais()){
-					if(player[vez] == player1){ //se for a vez do player1
+					if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
 						tropas_player[vez] += qntd_tropas_bonus_player1;
 						text_color(10); 
 					}
-					else{
+					else if(strcmp(player[vez],player2) == 0){
 						tropas_player[vez] += qntd_tropas_bonus_player2;
 						text_color(1);
 					}
