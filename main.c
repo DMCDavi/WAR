@@ -3,7 +3,7 @@
 #include "ferramentas.h"
 #include "rodada.h"
 
-//VSF DAVIR VC È GAY
+//VSF DAVIR VC Ãˆ GAY
 int main(){
 	
 		
@@ -76,8 +76,7 @@ int main(){
 				
 			}
 		
-			//colocar apos a segunda rodada de tropas adicionadas
-		
+				
 		} //fim do jogo		 
 	
 	}
