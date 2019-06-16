@@ -81,7 +81,7 @@ int main(){
 			text_color(1);
 			printf("\n\n\t\t\t\t\t\t\t\t\t");
 			printf("%s,", player2);
-			text_color(15).
+			text_color(15);
 			printf(" voce dominou o mundo!!!\n");
 		}		 
 	

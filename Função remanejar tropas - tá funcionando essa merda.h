@@ -10,15 +10,36 @@ void remanejar_tropas(){
 	cont_remanejar = 1;
 	//iniciar o remanejamento
 	fflush(stdin);
-	printf("\t\t\t\t\t\t\tTurno de %s\n", player[vez]);
+	if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+		text_color(10); 
+	}
+	else if(strcmp(player[vez],player2) == 0){
+				
+		text_color(1);
+	}
+  	printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+  	text_color(15);
 	printf("\t\t\t\t\t\t\tDeseja remanejar? [sim][nao]\n");
+	printf("\t\t\t\t\t\t\t\t\t     :");
 	scanf("%s",resp);
 	fflush(stdin);
 	
 	//loopin pra continuar a remanejar
 	while(strcasecmp(resp,"sim") == 0){
 		fflush(stdin);
-		printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja a saida de tropas:\n");
+		if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+			text_color(10); 
+		}
+		else if(strcmp(player[vez],player2) == 0){
+				
+			text_color(1);
+		}
+  		printf("\t\t\t\t\t\t\t\t\t%s, ", player[vez]);
+  		text_color(15);
+		printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja a saida de tropas\n");
+		printf("\t\t\t\t\t\t\t\t\t     :");
 		scanf("%c", &posicao_pais1); 
 		fflush(stdin);
 		
@@ -28,17 +49,42 @@ void remanejar_tropas(){
 			fflush(stdin);
 			text_color(4);
 			printf("\t\t\t\t\t\t\t[ERRO - O PAIS NAO EXISTE OU NAO TE PERTENCE]\n");
-			printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja a saida de tropas:\n");
+			
+			if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+				text_color(10); 
+			}
+			else if(strcmp(player[vez],player2) == 0){
+				
+				text_color(1);
+			}
+			printf("\t\t\t\t\t\t\t%s,", player[vez]);
+			text_color(15);
+			printf("\t\t\t\t\t\t\t Digite a letra do pais que deseja a saida de tropas:\n");
+			printf("\t\t\t\t\t\t\t\t\t     :");
 			scanf("%c", &posicao_pais1); 
 			fflush(stdin);	
 			
 		}
+		text_color(15);
 		printf("\n\t\t\t\t\t\t\t========================================================\n");
 		
-		printf("\t\t\t\t\t\t\t%s,Digite a letra do pais que deseja a entrada de tropas:\n", player[vez]);
-		printf("\t\t\t\t\t\t\tCaso esteja sem paises proximos, digite ['0'] para sair!:\n");
+		printf("\t\t\t\t\t\t\tCaso esteja sem paises proximos, digite ['0'] para sair!\n");
+		if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+			text_color(10); 
+		}
+		else if(strcmp(player[vez],player2) == 0){
+				
+			text_color(1);
+		}
+		printf("\t\t\t\t\t\t\t%s,", player[vez]);
+		text_color(15);
+		printf(" Digite a letra do pais que deseja a entrada de tropas\n");
+		printf("\t\t\t\t\t\t\t\t\t     :");
 		scanf("%c", &posicao_pais2);
 			if((posicao_pais2 =='0')){
+				text_color(15);
 				system("pause");
 				system("cls");
 				break;
@@ -46,8 +92,20 @@ void remanejar_tropas(){
 		//VERFICA EXISTENCIA PAIS		
 		while(!teste_existencia_pais(posicao_pais2) || !teste_dono_pais(posicao_pais2)){ // testara se o pais existe ou se o joagdor da vez possui o pais
 			fflush(stdin);
+			text_color(4);
 			printf("\t\t\t\t\t\t\t[ERRO - O PAIS NAO EXISTE OU NAO TE PERTENCE]\n");
-			printf("\t\t\t\t\t\t\tDigite a letra do pais que deseja a entrada de tropas:\n");
+			if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+				text_color(10); 
+			}
+			else if(strcmp(player[vez],player2) == 0){
+				
+				text_color(1);
+			}
+			printf("\t\t\t\t\t\t\t%s,", player[vez]);
+			text_color(15);
+			printf("\t\t\t\t\t\t\t Digite a letra do pais que deseja a entrada de tropas\n");
+			printf("\t\t\t\t\t\t\t\t\t     :");
 			scanf("%c", &posicao_pais2);
 		
 			fflush(stdin); // limba buffer.
@@ -56,7 +114,18 @@ void remanejar_tropas(){
 		if(teste_vizinhanca_pais(posicao_pais1,posicao_pais2)){
 			//insire a quantidade de tropas pra remanejar
 			int qntdTropasRemanejar =0;
-			printf("\t\t\t\t\t\t\tinsira a quantidade de tropas que voce quer remanejar:\n");
+			if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+				text_color(10); 
+			}
+			else if(strcmp(player[vez],player2) == 0){
+				
+				text_color(1);
+			}
+			printf("\t\t\t\t\t\t\t%s,", player[vez]);
+			text_color(15);
+			printf("\t\t\t\t\t\t\t Insira a quantidade de tropas que voce quer remanejar:\n");
+			printf("\t\t\t\t\t\t\t\t\t     :");
 			scanf("%d", &qntdTropasRemanejar);
 			
 
@@ -89,7 +158,7 @@ void remanejar_tropas(){
 			int qtd_Tropas_Pais_Entrada = 0; // atribui a quantidade inicial a 0 para nao dar problema
 			
 			qtd_Tropas_Pais_Entrada = tropas_pais[num_pais2]; // agora atribui o variavel a outra para comparacao
-			
+			text_color(15);
 			printf("\n========================================================\n");
 			printf("[Tropas pais saida]: %d\n", qtd_Tropas_Pais_Saida);
 			printf("[Tropas pais entrada]: %d\n", qtd_Tropas_Pais_Entrada);
@@ -120,11 +189,20 @@ void remanejar_tropas(){
 		
 		system("cls");
 		print_mapa();
-		printf("\t\t\t\t\t\t\tTurno de %s", player[vez]);
-		
+		if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
+					
+					text_color(10); 
+				}
+				else if(strcmp(player[vez],player2) == 0){
+					
+					text_color(1);
+				}
+  		printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+		text_color(15);
 		printf("\n\t\t\t\t\t\t\t========================================================\n");
 		fflush(stdin);
 		printf("\t\t\t\t\t\t\tDeseja remanejar mais? [sim][nao]\n");
+		printf("\t\t\t\t\t\t\t\t\t     :");
 		scanf("%s",resp);
 		cont_remanejar++;
 	}
