@@ -2,7 +2,7 @@
 #include "inicio.h"
 #include "ferramentas.h"
 #include "rodada.h"
-#include "ataque_defesa.h"
+
 //VSF DAVIR VC È GAY
 int main(){
 	
@@ -61,7 +61,7 @@ int main(){
 		
 				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
 				
-				//remanejar_tropas(); // remaneja as tropas ao fim do turno	
+				remanejar_tropas(); // remaneja as tropas ao fim do turno	
 				
 			}
 		
@@ -81,7 +81,7 @@ int main(){
 			text_color(1);
 			printf("\n\n\t\t\t\t\t\t\t\t\t");
 			printf("%s,", player2);
-			text_color(15).
+			text_color(15);
 			printf(" voce dominou o mundo!!!\n");
 		}		 
 	
