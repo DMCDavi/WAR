@@ -234,6 +234,7 @@ void remanejar_tropas(){
 		scanf("%s",resp);
 		cont_remanejar++;
 	}
+	system("cls");
 	print_mapa();	
 	printf("\t\t\t\t\t\t\t\tSeu turno acabou, indo para o proximo player!\n");
 	system("pause");	

@@ -30,7 +30,7 @@ int main(){
 		
 		//comeca o jogo
 		while(qntd_paises_player1 <20 || qntd_paises_player2 < 20){
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+			for(vez = 0; vez <= 1; vez++){ //laco de repeticao que faz cada jogador adicionar suas tropas no inicio do jogo
       				
 			  	if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
 					
@@ -43,9 +43,10 @@ int main(){
   				printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
    				add_tropas();
 	
-			}
+			} vez = 0;
 		
-			for(vez = 0; vez <= 1; vez++){ //laÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§o de repetiÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â§ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â£o que faz cada jogador adicionar suas tropas no inicio do jogo
+			while(qntd_paises_player1 != 20 && qntd_paises_player2 != 20){ //laco que faz cada jogador adicionar suas tropas no inicio do jogo
+				
 				if(strcmp(player[vez],player1) == 0){ //se for a vez do player1
 						
 					text_color(10); 
@@ -61,7 +62,17 @@ int main(){
 		
 				ataque_defesa(); //so ataca paises que nao tiveram tropas adicionadas
 				
-				remanejar_tropas(); // remaneja as tropas ao fim do turno	
+				remanejar_tropas(); // remaneja as tropas ao fim do turno
+				
+				if(vez == 1){
+					
+					vez = 0;
+					
+				}else if(vez == 0){
+					
+					vez = 1;
+					
+				}	
 				
 			}
 		
