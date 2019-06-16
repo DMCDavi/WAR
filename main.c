@@ -78,23 +78,7 @@ int main(){
 		
 			//colocar apos a segunda rodada de tropas adicionadas
 		
-		} //fim do jogo
-		
-		//fim do jogo
-		if(qntd_paises_player1 == 20){ //se o player1 ganhar
-			text_color(10);
-			printf("\n\n\t\t\t\t\t\t\t\t\t");
-			printf("%s,", player1);
-			text_color(15);
-			printf(" voce dominou o mundo!!!\n");
-		}
-		else if(qntd_paises_player2 == 20){ //se o player2 ganhar
-			text_color(1);
-			printf("\n\n\t\t\t\t\t\t\t\t\t");
-			printf("%s,", player2);
-			text_color(15);
-			printf(" voce dominou o mundo!!!\n");
-		}		 
+		} //fim do jogo		 
 	
 	}
 	return 0;

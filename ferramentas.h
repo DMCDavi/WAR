@@ -474,7 +474,37 @@ void contar_paises(){
 			qntd_paises_player2++;
 			
 		}
-	
-	}
+		
+	} //qntd_paises_player1 = 20;
+	//fim do jogo
+		if(qntd_paises_player1 == 20){ //se o player1 ganhar
+			system("cls");
+			text_color(10);
+			printf("\n\n\t\t\t\t\t\t\t\t\t");
+			printf("%s,", player1);
+			text_color(15);
+			printf("VOCE EH UM DEUS E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
+			text_color(10);
+			printf("\n\n\t\t\t\t\t\t\t\t\tJa voce");
+			printf(" %s", player1);
+			text_color(15);
+			printf("... Sinto pena, sua familia com certeza tem vergonha de voce.\n");
+			system("pause");
+			
+		}
+		else if(qntd_paises_player2 == 20){ //se o player2 ganhar
+			system("cls");
+			text_color(10);
+			printf("\n\n\t\t\t\t\t\t\t\t\t");
+			printf("%s,", player2);
+			text_color(15);
+			printf("VOCE EH UM DEUS E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
+			text_color(10);
+			printf("\n\n\t\t\t\t\t\t\t\t\tJa voce");
+			printf(" %s", player2);
+			text_color(15);
+			printf("... Sinto pena, sua familia com certeza tem vergonha de voce.\n");
+			system("pause");
+		}
 	
 }
