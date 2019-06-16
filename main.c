@@ -40,7 +40,7 @@ int main(){
 					
 					text_color(1);
 				}
-  				printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
+				printf("\t\t\t\t\t\t\t\t\tTurno de %s! ", player[vez]);
    				add_tropas();
 	
 			} vez = 0;
