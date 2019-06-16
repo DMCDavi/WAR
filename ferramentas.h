@@ -483,7 +483,7 @@ void contar_paises(){
 		printf("\n\n\t\t\t\t\t\t\t\t\t");
 		printf("%s,", player1);
 		text_color(15);
-		printf("VOCE EH UM(A) DEUS(A) (LAPA) E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
+		printf("VOCE EH UM(A) DEUS(A) [LAPA ÉS TU?] E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
 		text_color(1);
 		printf("\n\n\t\t\t\t\t\t\t\t\tJa voce");
 		printf(" %s", player2);
@@ -499,7 +499,7 @@ void contar_paises(){
 		printf("\n\n\t\t\t\t\t\t\t\t\t");
 		printf("%s,", player2);
 		text_color(15);
-		printf("VOCE EH UM(A) DEUS(A) (LAPA) E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
+		printf("VOCE EH UM(A) DEUS(A) [LAPA ÉS TU?] E MERECE UM BIG BIG. NAPOLEAO SENTE INVEJA DE VOCE!!!\n");
 		text_color(10);
 		printf("\n\n\t\t\t\t\t\t\t\t\tJa voce");
 		printf(" %s", player1);
