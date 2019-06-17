@@ -3,7 +3,7 @@
 #include "ferramentas.h"
 #include "rodada.h"
 
-//VSF DAVIR VC È GAY
+
 int main(){
 	
 		
